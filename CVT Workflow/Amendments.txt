@@ -1,0 +1,50 @@
+CVT :
+1.For TAT consider the following activity types
+Org Creation & Inflow - 4 days
+Inflow - 4 days
+
+2. For Volumes consider the following activity types (CVT)
+
+BAU Project (Inflow)
+BAU Project (Org Creation and Inflow) (add +1)
+ForDeletion
+Inflow
+Market Security
+Org Creation & Inflow (add +1 )
+Org Exception Report
+Reactivation
+Wolf Records
+
+MFC UK  Volumes and TAT
+Catastrophic Code
+,LORS Code
+,MFCUK
+,Project (not in TAT)
+
+
+For Volumes
+
+
+2.Add Org Creation Date and Time after Org Created by
+
+3.Org Created volumes and Inflow processed by volumes to be shown separately in active ops report
+
+4. Completed volumes to have Org Created volumes also
+
+5. Remove emails from volumes
+
+6. Inflow & Org creation/inflow - org id should be mandatory field 
+
+7. org status should also be mandatory - for Inflow, reactivation, org creation/inflow activity
+
+8. Remove auto update of names
+
+
+---03rd July
+
+1. Requery Date and Time, Requried By (associate names) and Required For (query category) - CVT Workflow
+
+2. Org ID and Org Status should be mandatory (BAU Project Inflow, BAU Project Org Creation and Inflow, Inflow, Org Creation and Inflow, Reactivation) - CVT Workflow
+
+
+
