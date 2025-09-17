@@ -1,0 +1,206 @@
+string messsage = "Do you want to update the record?";
+            string title = "Message Box";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(messsage,title,buttons);
+            if (result == DialogResult.Yes)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.dataGridView2.Rows[e.RowIndex];
+                    requestid.Text = row.Cells["txtRequestId2"].Value.ToString();
+                    activitytype.Text = row.Cells["txtActivityType2"].Value.ToString();
+                    partyname.Text = row.Cells["txtPartyName2"].Value.ToString();
+                    receiveddate.Text = row.Cells["txtReceivedDate2"].Value.ToString();
+                    receivedtime.Text = row.Cells["txtReceivedTime2"].Value.ToString();
+                    if (string.IsNullOrEmpty(row.Cells["txtCVTStartDate2"].Value.ToString()))
+                    {
+                        checkBox7.Checked = false;
+                    }
+                    else
+                    {
+                        startdate.Text = row.Cells["txtCVTStartDate2"].Value.ToString();
+                        starttime.Text = row.Cells["txtCVTStartTime2"].Value.ToString();
+                        orgcreatedby.Text = row.Cells["txtOrgCreatedBy2"].Value.ToString();
+                    }
+                    processedby.Text = row.Cells["txtProcessedBy2"].Value.ToString();
+                    if (string.IsNullOrEmpty(row.Cells["txtBU2"].Value.ToString()))
+                    {
+                        bu.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        bu.Text = row.Cells["txtBU2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtRevisedBU2"].Value.ToString()))
+                    {
+                        revisedbu.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        revisedbu.Text = row.Cells["txtRevisedBU2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtRole2"].Value.ToString()))
+                    {
+                        role.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        role.Text = row.Cells["txtRole2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtOrgID2"].Value.ToString()))
+                    {
+                        orgid.Text = string.Empty;
+                    }
+                    else
+                    {
+                        orgid.Text = row.Cells["txtOrgID2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtOrgStatus2"].Value.ToString()))
+                    {
+                        orgstatus.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        orgstatus.Text = row.Cells["txtOrgStatus2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtDunsNumber2"].Value.ToString()))
+                    {
+                        dunsnumber.Text = string.Empty;
+                    }
+                    else
+                    {
+                        dunsnumber.Text = row.Cells["txtDunsNumber2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtKYCCompletedDate2"].Value.ToString()))
+                    {
+                        checkBox1.Checked = false;
+                    }
+                    else
+                    {
+                        checkBox1.Checked = true;
+                        kyccompleteddate.Text = row.Cells["txtKYCCompletedDate2"].Value.ToString();
+                        kyccompletedtime.Text = row.Cells["txtKYCCompletedTime2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtFirstCheckCompletedDate2"].Value.ToString()))
+                    {
+                        checkBox2.Checked = false;
+                    }
+                    else
+                    {
+                        checkBox2.Checked = true;
+                        firstcheckcompleteddate.Text = row.Cells["txtFirstCheckCompletedDate2"].Value.ToString();
+                        firstcheckcompletedtime.Text = row.Cells["txtFirstCheckCompletedTime2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtRequestorSegmentName2"].Value.ToString()))
+                    {
+                        requestorsegmentname.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        requestorsegmentname.Text = row.Cells["txtRequestorSegmentName2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtQueryDate2"].Value.ToString()))
+                    {
+                        checkBox3.Checked = false;
+                    }
+                    else
+                    {
+                        checkBox3.Checked = true;
+                        querydate.Text = row.Cells["txtQueryDate2"].Value.ToString();
+                        querytime.Text = row.Cells["txtQueryTime2"].Value.ToString();
+                        querycategory.Text = row.Cells["txtQueryCategory2"].Value.ToString();
+                        queriedfor.Text = row.Cells["txtQueriedFor2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtQueryResolvedDate2"].Value.ToString()))
+                    {
+                        checkBox4.Checked = false;
+                    }
+                    else
+                    {
+                        checkBox4.Checked = true;
+                        queryresolveddate.Text = row.Cells["txtQueryResolvedDate2"].Value.ToString();
+                        queryresolvedtime.Text = row.Cells["txtQueryResolvedTime2"].Value.ToString();
+                        queryresolvedby.Text = row.Cells["txtQueryResolvedBy2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtApprovedDate2"].Value.ToString()))
+                    {
+                        checkBox5.Checked = false;
+                    }
+                    else
+                    {
+                        checkBox5.Checked = true;
+                        approveddate.Text = row.Cells["txtApprovedDate2"].Value.ToString();
+                        approvedtime.Text = row.Cells["txtApprovedTime2"].Value.ToString();
+                        approvedby.Text = row.Cells["txtApprovedBy2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtEscalationReceivedDate2"].Value.ToString()))
+                    {
+                        checkBox6.Checked = false;
+                    }
+                    else
+                    {
+                        checkBox6.Checked = true;
+                        escalationreceiveddate.Text = row.Cells["txtEscalationReceivedDate2"].Value.ToString();
+                        escalationreceivedtime.Text = row.Cells["txtEscalationReceivedTime2"].Value.ToString();
+                        escalationhandledby.Text = row.Cells["txtEscalationHandledBy2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtPartyLocation2"].Value.ToString()))
+                    {
+                        partylocation.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        partylocation.Text = row.Cells["txtPartyLocation2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtRequestorEmailAddress2"].Value.ToString()))
+                    {
+                        requestoremailaddress.Text = string.Empty;
+                    }
+                    else
+                    {
+                        requestoremailaddress.Text = row.Cells["txtRequestorEmailAddress2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtRequestorLocation2"].Value.ToString()))
+                    {
+                        requestorlocation.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        requestorlocation.Text = row.Cells["txtRequestorLocation2"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txtComments2"].Value.ToString()))
+                    {
+                        comments.Text = string.Empty;
+                    }
+                    else
+                    {
+                        comments.Text = row.Cells["txtComments2"].Value.ToString();
+                    }
+                    volumes.Value = Convert.ToInt32(row.Cells["txtVolumes2"].Value);
+                    if (activitytype.Text == "CVT New Request" && role.Text == "Client")
+                    {
+                        insert.Enabled = true;
+                        update.Enabled = true;
+                    }
+                    else if (activitytype.Text == "Org Creation" && role.Text == "Client")
+                    {
+                        insert.Enabled = true;
+                        update.Enabled = true;
+                    }
+                    else if (activitytype.Text == "Reactivation" && role.Text == "Client")
+                    {
+                        insert.Enabled = true;
+                        update.Enabled = true;
+                    }
+
+                    else
+                    {
+                        insert.Enabled = false;
+                        update.Enabled = true;
+                    }
+                }
+            }
+            else
+            {
+                requestid.Focus();
+            }
