@@ -877,13 +877,33 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("OrgID cannot be less than 5 letters or numbers");
                 }
-                else if (approved_date.Text.Trim() != string.Empty  && org_status.Text != "Approved" && (role.Text != "Client Delegate" || role.Text != "Instructing Party" || role.Text != "Insured - Standalone" || role.Text != "Reinsured - Standalone"))
+                else if (approved_date.Text.Trim() != string.Empty && org_status.Text != "Approved" && (role.Text != "Client Delegate" || role.Text != "Instructing Party" || role.Text != "Insured - Standalone" || role.Text != "Reinsured - Standalone"))
                 {
                     MessageBox.Show("Org Status should be approved");
                 }
-                else if (approved_date.Text.Trim() == string.Empty &&  org_status.Text == "Approved" && (role.Text != "Client Delegate" || role.Text != "Instructing Party" || role.Text != "Insured - Standalone" || role.Text != "Reinsured - Standalone"))
+                else if (approved_date.Text.Trim() == string.Empty && org_status.Text == "Approved" && (role.Text != "Client Delegate" || role.Text != "Instructing Party" || role.Text != "Insured - Standalone" || role.Text != "Reinsured - Standalone"))
                 {
                     MessageBox.Show("Please update Approved Date");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(pf_risk_category.Text))
+                {
+                    MessageBox.Show("Please update PF Risk Category");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(other_parties.Text))
+                {
+                    MessageBox.Show("Please update Other parties");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(gcid_in_ecs_status.Text))
+                {
+                    MessageBox.Show("Please update GCID in ECS Status");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(fca_updated_in_eclipse.Text))
+                {
+                    MessageBox.Show("Please update FCA Updated in Eclipse");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(new_client.Text))
+                {
+                    MessageBox.Show("Please update New client");
                 }
                 else
                 {
@@ -1187,6 +1207,26 @@ namespace CVT_Workflow
                 else if (approved_date.Text.Trim() == string.Empty && org_status.Text == "Approved" && (role.Text != "Client Delegate" || role.Text != "Instructing Party" || role.Text != "Insured - Standalone" || role.Text != "Reinsured - Standalone"))
                 {
                     MessageBox.Show("Please update Approved Date");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(pf_risk_category.Text))
+                {
+                    MessageBox.Show("Please update PF Risk Category");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(other_parties.Text))
+                {
+                    MessageBox.Show("Please update Other parties");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(gcid_in_ecs_status.Text))
+                {
+                    MessageBox.Show("Please update GCID in ECS Status");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(fca_updated_in_eclipse.Text))
+                {
+                    MessageBox.Show("Please update FCA Updated in Eclipse");
+                }
+                else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(new_client.Text))
+                {
+                    MessageBox.Show("Please update New client");
                 }
                 else
                 {
