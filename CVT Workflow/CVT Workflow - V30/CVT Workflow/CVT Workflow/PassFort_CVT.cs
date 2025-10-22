@@ -128,13 +128,13 @@ namespace CVT_Workflow
                 approved_date.Enabled = false;
             }
 
-            else if (role.Text == "Insured - Standalone")
-            {
-                approved_by.SelectedIndex = -1;
-                approved_date.CustomFormat = " ";
-                approved_by.Enabled = false;
-                approved_date.Enabled = false;
-            }
+            //else if (role.Text == "Insured - Standalone")
+            //{
+            //    approved_by.SelectedIndex = -1;
+            //    approved_date.CustomFormat = " ";
+            //    approved_by.Enabled = false;
+            //    approved_date.Enabled = false;
+            //}
             else if (role.Text == "Instructing Party")
             {
                 approved_by.SelectedIndex = -1;
@@ -142,13 +142,13 @@ namespace CVT_Workflow
                 approved_by.Enabled = false;
                 approved_date.Enabled = false;
             }
-            else if (role.Text == "Reinsured - Standalone")
-            {
-                approved_by.SelectedIndex = -1;
-                approved_date.CustomFormat = " ";
-                approved_by.Enabled = false;
-                approved_date.Enabled = false;
-            }
+            //else if (role.Text == "Reinsured - Standalone")
+            //{
+            //    approved_by.SelectedIndex = -1;
+            //    approved_date.CustomFormat = " ";
+            //    approved_by.Enabled = false;
+            //    approved_date.Enabled = false;
+            //}
             else
             {
                 approved_by.Enabled = true;
@@ -885,6 +885,7 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Please update Approved Date");
                 }
+                //if conditions added on 22nd Oct 2025
                 else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(pf_risk_category.Text))
                 {
                     MessageBox.Show("Please update PF Risk Category");
@@ -904,6 +905,10 @@ namespace CVT_Workflow
                 else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(new_client.Text))
                 {
                     MessageBox.Show("Please update New client");
+                }
+                else if(org_status.Text == "Pending CVT SPOE/Approval" && inflow_processed_date.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Please update Inflow Processed Date");
                 }
                 else
                 {
@@ -1208,6 +1213,7 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Please update Approved Date");
                 }
+                //if conditions added on 22nd Oct 2025
                 else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(pf_risk_category.Text))
                 {
                     MessageBox.Show("Please update PF Risk Category");
@@ -1227,6 +1233,10 @@ namespace CVT_Workflow
                 else if (role.Text == "Client" && org_status.Text == "Pending CVT SPOE/Approval" && string.IsNullOrEmpty(new_client.Text))
                 {
                     MessageBox.Show("Please update New client");
+                }
+                else if (org_status.Text == "Pending CVT SPOE/Approval" && inflow_processed_date.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Please update Inflow Processed Date");
                 }
                 else
                 {

@@ -1604,7 +1604,6 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Please update Query Date");
                 }
-
                 else
                 {
                     conn.Open();
