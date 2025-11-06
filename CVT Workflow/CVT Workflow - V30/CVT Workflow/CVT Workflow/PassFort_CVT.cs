@@ -669,7 +669,7 @@ namespace CVT_Workflow
                 }
                 if (string.IsNullOrEmpty(query_raised_by.Text))
                 {
-                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By",DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Query_Raised_By",DBNull.Value);
                 }
                 else
                 {
@@ -905,19 +905,19 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Approved date cannot be more than today's date");
                 }
-                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
+                else if (query_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(query_category.Text))
                 {
                     MessageBox.Show("Please update Query Category");
                 }
-                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
+                else if (requery_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(query_category.Text))
                 {
                     MessageBox.Show("Please update Query Category");
                 }
-                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
+                else if (query_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
                     MessageBox.Show("Please update Queried For");
                 }
-                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
+                else if (requery_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
                     MessageBox.Show("Please update Queried For");
                 }
@@ -1064,7 +1064,7 @@ namespace CVT_Workflow
                 }
                 if (string.IsNullOrEmpty(query_raised_by.Text))
                 {
-                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Query_Raised_By", DBNull.Value);
                 }
                 else
                 {
@@ -1295,19 +1295,19 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Approved date cannot be more than today's date");
                 }
-                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
+                else if (query_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(query_category.Text))
                 {
                     MessageBox.Show("Please update Query Category");
                 }
-                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
+                else if (requery_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(query_category.Text))
                 {
                     MessageBox.Show("Please update Query Category");
                 }
-                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
+                else if (query_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
                     MessageBox.Show("Please update Queried For");
                 }
-                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
+                else if (requery_raised_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
                     MessageBox.Show("Please update Queried For");
                 }
