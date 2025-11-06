@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.requery_resolved_date = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.requery_raised_by = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.requery_raised_date = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.screening_volumes = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.activity_type = new System.Windows.Forms.ComboBox();
@@ -69,7 +75,6 @@
             this.label_volumes = new System.Windows.Forms.Label();
             this.query_resolved_date = new System.Windows.Forms.DateTimePicker();
             this.label_queryresolveddate = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.query_raised_by = new System.Windows.Forms.ComboBox();
             this.label_queryraisedby = new System.Windows.Forms.Label();
             this.queried_for = new System.Windows.Forms.ComboBox();
@@ -103,6 +108,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.mainpage = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.searchby_partyname = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.searchby_orgid = new System.Windows.Forms.TextBox();
+            this.current_datetime = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.txt_RequestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_PartyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Activity_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,10 +130,13 @@
             this.txt_UBO_Validated_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_UBO_Validated_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Raised_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_ReQuery_Raised_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Queried_For = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Raised_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Resolved_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_ReQuery_Raised_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_ReQuery_Resolved_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Volumes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Approved_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Approved_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,19 +154,18 @@
             this.txt_New_Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_PF_Log = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Screening_Volumes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchby_partyname = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.searchby_orgid = new System.Windows.Forms.TextBox();
-            this.current_datetime = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.requery_resolved_date);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.requery_raised_by);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.requery_raised_date);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.screening_volumes);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.activity_type);
@@ -192,7 +206,6 @@
             this.groupBox1.Controls.Add(this.label_volumes);
             this.groupBox1.Controls.Add(this.query_resolved_date);
             this.groupBox1.Controls.Add(this.label_queryresolveddate);
-            this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.query_raised_by);
             this.groupBox1.Controls.Add(this.label_queryraisedby);
             this.groupBox1.Controls.Add(this.queried_for);
@@ -230,6 +243,64 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // requery_resolved_date
+            // 
+            this.requery_resolved_date.CustomFormat = " ";
+            this.requery_resolved_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.requery_resolved_date.Location = new System.Drawing.Point(1457, 271);
+            this.requery_resolved_date.Name = "requery_resolved_date";
+            this.requery_resolved_date.Size = new System.Drawing.Size(260, 26);
+            this.requery_resolved_date.TabIndex = 78;
+            this.requery_resolved_date.ValueChanged += new System.EventHandler(this.requery_resolved_date_ValueChanged);
+            this.requery_resolved_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.requery_resolved_date_KeyDown);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1265, 274);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(186, 20);
+            this.label12.TabIndex = 77;
+            this.label12.Text = "Re-Query Resolved Date";
+            // 
+            // requery_raised_by
+            // 
+            this.requery_raised_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.requery_raised_by.FormattingEnabled = true;
+            this.requery_raised_by.Location = new System.Drawing.Point(1005, 271);
+            this.requery_raised_by.Name = "requery_raised_by";
+            this.requery_raised_by.Size = new System.Drawing.Size(217, 28);
+            this.requery_raised_by.TabIndex = 75;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(845, 274);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(153, 20);
+            this.label11.TabIndex = 74;
+            this.label11.Text = "Re-Query Raised By";
+            // 
+            // requery_raised_date
+            // 
+            this.requery_raised_date.CustomFormat = " ";
+            this.requery_raised_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.requery_raised_date.Location = new System.Drawing.Point(184, 274);
+            this.requery_raised_date.Name = "requery_raised_date";
+            this.requery_raised_date.Size = new System.Drawing.Size(236, 26);
+            this.requery_raised_date.TabIndex = 73;
+            this.requery_raised_date.ValueChanged += new System.EventHandler(this.requery_raised_date_ValueChanged);
+            this.requery_raised_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.requery_raised_date_KeyDown);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 274);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(170, 20);
+            this.label5.TabIndex = 72;
+            this.label5.Text = "Re-Query Raised Date";
             // 
             // screening_volumes
             // 
@@ -328,7 +399,7 @@
             // 
             // volumes
             // 
-            this.volumes.Location = new System.Drawing.Point(99, 320);
+            this.volumes.Location = new System.Drawing.Point(99, 330);
             this.volumes.Name = "volumes";
             this.volumes.Size = new System.Drawing.Size(100, 26);
             this.volumes.TabIndex = 42;
@@ -498,7 +569,7 @@
             "Requested",
             "Available",
             "Created"});
-            this.gcid_in_ecs_status.Location = new System.Drawing.Point(1556, 319);
+            this.gcid_in_ecs_status.Location = new System.Drawing.Point(1556, 329);
             this.gcid_in_ecs_status.Name = "gcid_in_ecs_status";
             this.gcid_in_ecs_status.Size = new System.Drawing.Size(121, 28);
             this.gcid_in_ecs_status.TabIndex = 52;
@@ -506,7 +577,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1445, 319);
+            this.label7.Location = new System.Drawing.Point(1445, 329);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 40);
             this.label7.TabIndex = 51;
@@ -519,7 +590,7 @@
             this.other_parties.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.other_parties.Location = new System.Drawing.Point(1312, 319);
+            this.other_parties.Location = new System.Drawing.Point(1312, 329);
             this.other_parties.Name = "other_parties";
             this.other_parties.Size = new System.Drawing.Size(112, 28);
             this.other_parties.TabIndex = 50;
@@ -527,7 +598,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1200, 319);
+            this.label6.Location = new System.Drawing.Point(1200, 329);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 20);
             this.label6.TabIndex = 49;
@@ -541,7 +612,7 @@
             "High",
             "Medium",
             "Low"});
-            this.pf_risk_category.Location = new System.Drawing.Point(1048, 317);
+            this.pf_risk_category.Location = new System.Drawing.Point(1048, 327);
             this.pf_risk_category.Name = "pf_risk_category";
             this.pf_risk_category.Size = new System.Drawing.Size(131, 28);
             this.pf_risk_category.TabIndex = 48;
@@ -550,7 +621,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(969, 319);
+            this.label17.Location = new System.Drawing.Point(969, 329);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(73, 40);
             this.label17.TabIndex = 47;
@@ -560,7 +631,7 @@
             // 
             this.approved_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.approved_by.FormattingEnabled = true;
-            this.approved_by.Location = new System.Drawing.Point(688, 317);
+            this.approved_by.Location = new System.Drawing.Point(688, 327);
             this.approved_by.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.approved_by.Name = "approved_by";
             this.approved_by.Size = new System.Drawing.Size(271, 28);
@@ -570,7 +641,7 @@
             // label_approvedby
             // 
             this.label_approvedby.AutoSize = true;
-            this.label_approvedby.Location = new System.Drawing.Point(580, 319);
+            this.label_approvedby.Location = new System.Drawing.Point(580, 329);
             this.label_approvedby.Name = "label_approvedby";
             this.label_approvedby.Size = new System.Drawing.Size(99, 20);
             this.label_approvedby.TabIndex = 45;
@@ -580,7 +651,7 @@
             // 
             this.approved_date.CustomFormat = " ";
             this.approved_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.approved_date.Location = new System.Drawing.Point(333, 318);
+            this.approved_date.Location = new System.Drawing.Point(333, 328);
             this.approved_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.approved_date.Name = "approved_date";
             this.approved_date.Size = new System.Drawing.Size(232, 26);
@@ -591,7 +662,7 @@
             // label_approveddate
             // 
             this.label_approveddate.AutoSize = true;
-            this.label_approveddate.Location = new System.Drawing.Point(205, 320);
+            this.label_approveddate.Location = new System.Drawing.Point(205, 330);
             this.label_approveddate.Name = "label_approveddate";
             this.label_approveddate.Size = new System.Drawing.Size(116, 20);
             this.label_approveddate.TabIndex = 43;
@@ -600,7 +671,7 @@
             // label_volumes
             // 
             this.label_volumes.AutoSize = true;
-            this.label_volumes.Location = new System.Drawing.Point(7, 320);
+            this.label_volumes.Location = new System.Drawing.Point(7, 330);
             this.label_volumes.Name = "label_volumes";
             this.label_volumes.Size = new System.Drawing.Size(71, 20);
             this.label_volumes.TabIndex = 41;
@@ -610,10 +681,10 @@
             // 
             this.query_resolved_date.CustomFormat = " ";
             this.query_resolved_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.query_resolved_date.Location = new System.Drawing.Point(1365, 229);
+            this.query_resolved_date.Location = new System.Drawing.Point(1457, 229);
             this.query_resolved_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.query_resolved_date.Name = "query_resolved_date";
-            this.query_resolved_date.Size = new System.Drawing.Size(251, 26);
+            this.query_resolved_date.Size = new System.Drawing.Size(260, 26);
             this.query_resolved_date.TabIndex = 40;
             this.query_resolved_date.ValueChanged += new System.EventHandler(this.query_resolved_date_ValueChanged);
             this.query_resolved_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.query_resolved_date_KeyDown);
@@ -621,38 +692,27 @@
             // label_queryresolveddate
             // 
             this.label_queryresolveddate.AutoSize = true;
-            this.label_queryresolveddate.Location = new System.Drawing.Point(1222, 230);
+            this.label_queryresolveddate.Location = new System.Drawing.Point(1261, 230);
             this.label_queryresolveddate.Name = "label_queryresolveddate";
-            this.label_queryresolveddate.Size = new System.Drawing.Size(125, 40);
+            this.label_queryresolveddate.Size = new System.Drawing.Size(160, 20);
             this.label_queryresolveddate.TabIndex = 39;
-            this.label_queryresolveddate.Text = "Query Resolved \r\nDate";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(1179, 234);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(22, 21);
-            this.checkBox3.TabIndex = 38;
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.label_queryresolveddate.Text = "Query Resolved Date";
             // 
             // query_raised_by
             // 
             this.query_raised_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.query_raised_by.FormattingEnabled = true;
-            this.query_raised_by.Location = new System.Drawing.Point(924, 233);
+            this.query_raised_by.Location = new System.Drawing.Point(1004, 233);
             this.query_raised_by.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.query_raised_by.Name = "query_raised_by";
-            this.query_raised_by.Size = new System.Drawing.Size(240, 28);
+            this.query_raised_by.Size = new System.Drawing.Size(218, 28);
             this.query_raised_by.TabIndex = 37;
             this.query_raised_by.KeyDown += new System.Windows.Forms.KeyEventHandler(this.query_raised_by_KeyDown);
             // 
             // label_queryraisedby
             // 
             this.label_queryraisedby.AutoSize = true;
-            this.label_queryraisedby.Location = new System.Drawing.Point(787, 233);
+            this.label_queryraisedby.Location = new System.Drawing.Point(845, 233);
             this.label_queryraisedby.Name = "label_queryraisedby";
             this.label_queryraisedby.Size = new System.Drawing.Size(127, 20);
             this.label_queryraisedby.TabIndex = 36;
@@ -662,7 +722,7 @@
             // 
             this.queried_for.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.queried_for.FormattingEnabled = true;
-            this.queried_for.Location = new System.Drawing.Point(498, 266);
+            this.queried_for.Location = new System.Drawing.Point(555, 266);
             this.queried_for.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.queried_for.Name = "queried_for";
             this.queried_for.Size = new System.Drawing.Size(274, 28);
@@ -671,7 +731,7 @@
             // label_queriedfor
             // 
             this.label_queriedfor.AutoSize = true;
-            this.label_queriedfor.Location = new System.Drawing.Point(388, 266);
+            this.label_queriedfor.Location = new System.Drawing.Point(445, 266);
             this.label_queriedfor.Name = "label_queriedfor";
             this.label_queriedfor.Size = new System.Drawing.Size(93, 20);
             this.label_queriedfor.TabIndex = 34;
@@ -680,7 +740,7 @@
             // label_querycategory
             // 
             this.label_querycategory.AutoSize = true;
-            this.label_querycategory.Location = new System.Drawing.Point(371, 233);
+            this.label_querycategory.Location = new System.Drawing.Point(428, 233);
             this.label_querycategory.Name = "label_querycategory";
             this.label_querycategory.Size = new System.Drawing.Size(119, 20);
             this.label_querycategory.TabIndex = 32;
@@ -690,7 +750,7 @@
             // 
             this.query_category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.query_category.FormattingEnabled = true;
-            this.query_category.Location = new System.Drawing.Point(498, 233);
+            this.query_category.Location = new System.Drawing.Point(555, 233);
             this.query_category.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.query_category.Name = "query_category";
             this.query_category.Size = new System.Drawing.Size(274, 28);
@@ -701,10 +761,10 @@
             // 
             this.query_raised_date.CustomFormat = " ";
             this.query_raised_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.query_raised_date.Location = new System.Drawing.Point(119, 233);
+            this.query_raised_date.Location = new System.Drawing.Point(184, 233);
             this.query_raised_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.query_raised_date.Name = "query_raised_date";
-            this.query_raised_date.Size = new System.Drawing.Size(246, 26);
+            this.query_raised_date.Size = new System.Drawing.Size(236, 26);
             this.query_raised_date.TabIndex = 31;
             this.query_raised_date.ValueChanged += new System.EventHandler(this.query_raised_date_ValueChanged);
             this.query_raised_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.query_raised_date_KeyDown);
@@ -714,9 +774,9 @@
             this.label_querydate.AutoSize = true;
             this.label_querydate.Location = new System.Drawing.Point(7, 233);
             this.label_querydate.Name = "label_querydate";
-            this.label_querydate.Size = new System.Drawing.Size(109, 40);
+            this.label_querydate.Size = new System.Drawing.Size(144, 20);
             this.label_querydate.TabIndex = 30;
-            this.label_querydate.Text = "Query Raised \r\nDate";
+            this.label_querydate.Text = "Query Raised Date";
             // 
             // ubo_validation_date
             // 
@@ -965,10 +1025,13 @@
             this.txt_UBO_Validated_By,
             this.txt_UBO_Validated_Date,
             this.txt_Query_Raised_Date,
+            this.txt_ReQuery_Raised_Date,
             this.txt_Query_Category,
             this.txt_Queried_For,
             this.txt_Query_Raised_By,
             this.txt_Query_Resolved_Date,
+            this.txt_ReQuery_Raised_By,
+            this.txt_ReQuery_Resolved_Date,
             this.txt_Volumes,
             this.txt_Approved_Date,
             this.txt_Approved_By,
@@ -989,262 +1052,11 @@
             this.dataGridView1.Location = new System.Drawing.Point(23, 726);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(1693, 299);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // txt_RequestID
-            // 
-            this.txt_RequestID.DataPropertyName = "RequestID";
-            this.txt_RequestID.HeaderText = "RequestID";
-            this.txt_RequestID.Name = "txt_RequestID";
-            this.txt_RequestID.ReadOnly = true;
-            // 
-            // txt_PartyName
-            // 
-            this.txt_PartyName.DataPropertyName = "PartyName";
-            this.txt_PartyName.HeaderText = "PartyName";
-            this.txt_PartyName.Name = "txt_PartyName";
-            this.txt_PartyName.ReadOnly = true;
-            // 
-            // txt_Activity_Type
-            // 
-            this.txt_Activity_Type.DataPropertyName = "Activity_Type";
-            this.txt_Activity_Type.HeaderText = "Activity_Type";
-            this.txt_Activity_Type.Name = "txt_Activity_Type";
-            this.txt_Activity_Type.ReadOnly = true;
-            // 
-            // txt_Received_Date
-            // 
-            this.txt_Received_Date.DataPropertyName = "Received_Date";
-            this.txt_Received_Date.HeaderText = "Received_Date";
-            this.txt_Received_Date.Name = "txt_Received_Date";
-            this.txt_Received_Date.ReadOnly = true;
-            // 
-            // txt_Requestor_Email_Address
-            // 
-            this.txt_Requestor_Email_Address.DataPropertyName = "Requestor_Email_Address";
-            this.txt_Requestor_Email_Address.HeaderText = "Requestor_Email_Address";
-            this.txt_Requestor_Email_Address.Name = "txt_Requestor_Email_Address";
-            this.txt_Requestor_Email_Address.ReadOnly = true;
-            // 
-            // txt_Legal_Entity_Name
-            // 
-            this.txt_Legal_Entity_Name.DataPropertyName = "Legal_Entity_Name";
-            this.txt_Legal_Entity_Name.HeaderText = "Legal_Entity_Name";
-            this.txt_Legal_Entity_Name.Name = "txt_Legal_Entity_Name";
-            this.txt_Legal_Entity_Name.ReadOnly = true;
-            // 
-            // txt_Party_Location
-            // 
-            this.txt_Party_Location.DataPropertyName = "Party_Location";
-            this.txt_Party_Location.HeaderText = "Party_Location";
-            this.txt_Party_Location.Name = "txt_Party_Location";
-            this.txt_Party_Location.ReadOnly = true;
-            // 
-            // txt_Role
-            // 
-            this.txt_Role.DataPropertyName = "Role";
-            this.txt_Role.HeaderText = "Role";
-            this.txt_Role.Name = "txt_Role";
-            this.txt_Role.ReadOnly = true;
-            // 
-            // txt_OrgID
-            // 
-            this.txt_OrgID.DataPropertyName = "OrgID";
-            this.txt_OrgID.HeaderText = "OrgID";
-            this.txt_OrgID.Name = "txt_OrgID";
-            this.txt_OrgID.ReadOnly = true;
-            // 
-            // txt_Org_Status
-            // 
-            this.txt_Org_Status.DataPropertyName = "Org_Status";
-            this.txt_Org_Status.HeaderText = "Org_Status";
-            this.txt_Org_Status.Name = "txt_Org_Status";
-            this.txt_Org_Status.ReadOnly = true;
-            // 
-            // txt_Inflow_Processed_By
-            // 
-            this.txt_Inflow_Processed_By.DataPropertyName = "Inflow_Processed_By";
-            this.txt_Inflow_Processed_By.HeaderText = "Inflow_Processed_By";
-            this.txt_Inflow_Processed_By.Name = "txt_Inflow_Processed_By";
-            this.txt_Inflow_Processed_By.ReadOnly = true;
-            // 
-            // txt_Inflow_Processed_Date
-            // 
-            this.txt_Inflow_Processed_Date.DataPropertyName = "Inflow_Processed_Date";
-            this.txt_Inflow_Processed_Date.HeaderText = "Inflow_Processed_Date";
-            this.txt_Inflow_Processed_Date.Name = "txt_Inflow_Processed_Date";
-            this.txt_Inflow_Processed_Date.ReadOnly = true;
-            // 
-            // txt_UBO_Validated_By
-            // 
-            this.txt_UBO_Validated_By.DataPropertyName = "UBO_Validated_By";
-            this.txt_UBO_Validated_By.HeaderText = "UBO_Validated_By";
-            this.txt_UBO_Validated_By.Name = "txt_UBO_Validated_By";
-            this.txt_UBO_Validated_By.ReadOnly = true;
-            // 
-            // txt_UBO_Validated_Date
-            // 
-            this.txt_UBO_Validated_Date.DataPropertyName = "UBO_Validated_Date";
-            this.txt_UBO_Validated_Date.HeaderText = "UBO_Validated_Date";
-            this.txt_UBO_Validated_Date.Name = "txt_UBO_Validated_Date";
-            this.txt_UBO_Validated_Date.ReadOnly = true;
-            // 
-            // txt_Query_Raised_Date
-            // 
-            this.txt_Query_Raised_Date.DataPropertyName = "Query_Raised_Date";
-            this.txt_Query_Raised_Date.HeaderText = "Query_Raised_Date";
-            this.txt_Query_Raised_Date.Name = "txt_Query_Raised_Date";
-            this.txt_Query_Raised_Date.ReadOnly = true;
-            // 
-            // txt_Query_Category
-            // 
-            this.txt_Query_Category.DataPropertyName = "Query_Category";
-            this.txt_Query_Category.HeaderText = "Query_Category";
-            this.txt_Query_Category.Name = "txt_Query_Category";
-            this.txt_Query_Category.ReadOnly = true;
-            // 
-            // txt_Queried_For
-            // 
-            this.txt_Queried_For.DataPropertyName = "Queried_For";
-            this.txt_Queried_For.HeaderText = "Queried_For";
-            this.txt_Queried_For.Name = "txt_Queried_For";
-            this.txt_Queried_For.ReadOnly = true;
-            // 
-            // txt_Query_Raised_By
-            // 
-            this.txt_Query_Raised_By.DataPropertyName = "Query_Raised_By";
-            this.txt_Query_Raised_By.HeaderText = "Query_Raised_By";
-            this.txt_Query_Raised_By.Name = "txt_Query_Raised_By";
-            this.txt_Query_Raised_By.ReadOnly = true;
-            // 
-            // txt_Query_Resolved_Date
-            // 
-            this.txt_Query_Resolved_Date.DataPropertyName = "Query_Resolved_Date";
-            this.txt_Query_Resolved_Date.HeaderText = "Query_Resolved_Date";
-            this.txt_Query_Resolved_Date.Name = "txt_Query_Resolved_Date";
-            this.txt_Query_Resolved_Date.ReadOnly = true;
-            // 
-            // txt_Volumes
-            // 
-            this.txt_Volumes.DataPropertyName = "Volumes";
-            this.txt_Volumes.HeaderText = "Volumes";
-            this.txt_Volumes.Name = "txt_Volumes";
-            this.txt_Volumes.ReadOnly = true;
-            // 
-            // txt_Approved_Date
-            // 
-            this.txt_Approved_Date.DataPropertyName = "Approved_Date";
-            this.txt_Approved_Date.HeaderText = "Approved_Date";
-            this.txt_Approved_Date.Name = "txt_Approved_Date";
-            this.txt_Approved_Date.ReadOnly = true;
-            // 
-            // txt_Approved_By
-            // 
-            this.txt_Approved_By.DataPropertyName = "Approved_By";
-            this.txt_Approved_By.HeaderText = "Approved_By";
-            this.txt_Approved_By.Name = "txt_Approved_By";
-            this.txt_Approved_By.ReadOnly = true;
-            // 
-            // txt_PF_Risk_Category
-            // 
-            this.txt_PF_Risk_Category.DataPropertyName = "PF_Risk_Category";
-            this.txt_PF_Risk_Category.HeaderText = "PF_Risk_Category";
-            this.txt_PF_Risk_Category.Name = "txt_PF_Risk_Category";
-            this.txt_PF_Risk_Category.ReadOnly = true;
-            // 
-            // txt_Other_Parties
-            // 
-            this.txt_Other_Parties.DataPropertyName = "Other_Parties";
-            this.txt_Other_Parties.HeaderText = "Other_Parties";
-            this.txt_Other_Parties.Name = "txt_Other_Parties";
-            this.txt_Other_Parties.ReadOnly = true;
-            // 
-            // txt_GCID_In_ECS_Status
-            // 
-            this.txt_GCID_In_ECS_Status.DataPropertyName = "GCID_In_ECS_Status";
-            this.txt_GCID_In_ECS_Status.HeaderText = "GCID_In_ECS_Status";
-            this.txt_GCID_In_ECS_Status.Name = "txt_GCID_In_ECS_Status";
-            this.txt_GCID_In_ECS_Status.ReadOnly = true;
-            // 
-            // txt_FCA_Updated_In_Eclipse
-            // 
-            this.txt_FCA_Updated_In_Eclipse.DataPropertyName = "FCA_Updated_In_Eclipse";
-            this.txt_FCA_Updated_In_Eclipse.HeaderText = "FCA_Updated_In_Eclipse";
-            this.txt_FCA_Updated_In_Eclipse.Name = "txt_FCA_Updated_In_Eclipse";
-            this.txt_FCA_Updated_In_Eclipse.ReadOnly = true;
-            // 
-            // txt_Comments
-            // 
-            this.txt_Comments.DataPropertyName = "Comments";
-            this.txt_Comments.HeaderText = "Comments";
-            this.txt_Comments.Name = "txt_Comments";
-            this.txt_Comments.ReadOnly = true;
-            // 
-            // txt_Sub_Categories_QC
-            // 
-            this.txt_Sub_Categories_QC.DataPropertyName = "Sub_Categories_QC";
-            this.txt_Sub_Categories_QC.HeaderText = "Sub_Categories_QC";
-            this.txt_Sub_Categories_QC.Name = "txt_Sub_Categories_QC";
-            this.txt_Sub_Categories_QC.ReadOnly = true;
-            // 
-            // txt_Categories_QC
-            // 
-            this.txt_Categories_QC.DataPropertyName = "Categories_QC";
-            this.txt_Categories_QC.HeaderText = "Categories_QC";
-            this.txt_Categories_QC.Name = "txt_Categories_QC";
-            this.txt_Categories_QC.ReadOnly = true;
-            // 
-            // txt_QC_Date
-            // 
-            this.txt_QC_Date.DataPropertyName = "QC_Date";
-            this.txt_QC_Date.HeaderText = "QC_Date";
-            this.txt_QC_Date.Name = "txt_QC_Date";
-            this.txt_QC_Date.ReadOnly = true;
-            // 
-            // txt_QC_Done_By
-            // 
-            this.txt_QC_Done_By.DataPropertyName = "QC_Done_By";
-            this.txt_QC_Done_By.HeaderText = "QC_Done_By";
-            this.txt_QC_Done_By.Name = "txt_QC_Done_By";
-            this.txt_QC_Done_By.ReadOnly = true;
-            // 
-            // txt_LastUpdatedDateTime
-            // 
-            this.txt_LastUpdatedDateTime.DataPropertyName = "LastUpdatedDateTime";
-            this.txt_LastUpdatedDateTime.HeaderText = "LastUpdatedDateTime";
-            this.txt_LastUpdatedDateTime.Name = "txt_LastUpdatedDateTime";
-            this.txt_LastUpdatedDateTime.ReadOnly = true;
-            // 
-            // txt_EmpName
-            // 
-            this.txt_EmpName.DataPropertyName = "EmpName";
-            this.txt_EmpName.HeaderText = "EmpName";
-            this.txt_EmpName.Name = "txt_EmpName";
-            this.txt_EmpName.ReadOnly = true;
-            // 
-            // txt_New_Client
-            // 
-            this.txt_New_Client.DataPropertyName = "New_Client";
-            this.txt_New_Client.HeaderText = "New / New Client";
-            this.txt_New_Client.Name = "txt_New_Client";
-            this.txt_New_Client.ReadOnly = true;
-            // 
-            // txt_PF_Log
-            // 
-            this.txt_PF_Log.DataPropertyName = "PF_Log";
-            this.txt_PF_Log.HeaderText = "PF_Log";
-            this.txt_PF_Log.Name = "txt_PF_Log";
-            this.txt_PF_Log.ReadOnly = true;
-            // 
-            // txt_Screening_Volumes
-            // 
-            this.txt_Screening_Volumes.DataPropertyName = "Screening_Volumes";
-            this.txt_Screening_Volumes.HeaderText = "Screening_Volumes";
-            this.txt_Screening_Volumes.Name = "txt_Screening_Volumes";
-            this.txt_Screening_Volumes.ReadOnly = true;
             // 
             // searchby_partyname
             // 
@@ -1307,6 +1119,357 @@
             this.button2.Text = "TAT";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // txt_RequestID
+            // 
+            this.txt_RequestID.DataPropertyName = "RequestID";
+            this.txt_RequestID.HeaderText = "RequestID";
+            this.txt_RequestID.MinimumWidth = 8;
+            this.txt_RequestID.Name = "txt_RequestID";
+            this.txt_RequestID.ReadOnly = true;
+            this.txt_RequestID.Width = 150;
+            // 
+            // txt_PartyName
+            // 
+            this.txt_PartyName.DataPropertyName = "PartyName";
+            this.txt_PartyName.HeaderText = "PartyName";
+            this.txt_PartyName.MinimumWidth = 8;
+            this.txt_PartyName.Name = "txt_PartyName";
+            this.txt_PartyName.ReadOnly = true;
+            this.txt_PartyName.Width = 150;
+            // 
+            // txt_Activity_Type
+            // 
+            this.txt_Activity_Type.DataPropertyName = "Activity_Type";
+            this.txt_Activity_Type.HeaderText = "Activity_Type";
+            this.txt_Activity_Type.MinimumWidth = 8;
+            this.txt_Activity_Type.Name = "txt_Activity_Type";
+            this.txt_Activity_Type.ReadOnly = true;
+            this.txt_Activity_Type.Width = 150;
+            // 
+            // txt_Received_Date
+            // 
+            this.txt_Received_Date.DataPropertyName = "Received_Date";
+            this.txt_Received_Date.HeaderText = "Received_Date";
+            this.txt_Received_Date.MinimumWidth = 8;
+            this.txt_Received_Date.Name = "txt_Received_Date";
+            this.txt_Received_Date.ReadOnly = true;
+            this.txt_Received_Date.Width = 150;
+            // 
+            // txt_Requestor_Email_Address
+            // 
+            this.txt_Requestor_Email_Address.DataPropertyName = "Requestor_Email_Address";
+            this.txt_Requestor_Email_Address.HeaderText = "Requestor_Email_Address";
+            this.txt_Requestor_Email_Address.MinimumWidth = 8;
+            this.txt_Requestor_Email_Address.Name = "txt_Requestor_Email_Address";
+            this.txt_Requestor_Email_Address.ReadOnly = true;
+            this.txt_Requestor_Email_Address.Width = 150;
+            // 
+            // txt_Legal_Entity_Name
+            // 
+            this.txt_Legal_Entity_Name.DataPropertyName = "Legal_Entity_Name";
+            this.txt_Legal_Entity_Name.HeaderText = "Legal_Entity_Name";
+            this.txt_Legal_Entity_Name.MinimumWidth = 8;
+            this.txt_Legal_Entity_Name.Name = "txt_Legal_Entity_Name";
+            this.txt_Legal_Entity_Name.ReadOnly = true;
+            this.txt_Legal_Entity_Name.Width = 150;
+            // 
+            // txt_Party_Location
+            // 
+            this.txt_Party_Location.DataPropertyName = "Party_Location";
+            this.txt_Party_Location.HeaderText = "Party_Location";
+            this.txt_Party_Location.MinimumWidth = 8;
+            this.txt_Party_Location.Name = "txt_Party_Location";
+            this.txt_Party_Location.ReadOnly = true;
+            this.txt_Party_Location.Width = 150;
+            // 
+            // txt_Role
+            // 
+            this.txt_Role.DataPropertyName = "Role";
+            this.txt_Role.HeaderText = "Role";
+            this.txt_Role.MinimumWidth = 8;
+            this.txt_Role.Name = "txt_Role";
+            this.txt_Role.ReadOnly = true;
+            this.txt_Role.Width = 150;
+            // 
+            // txt_OrgID
+            // 
+            this.txt_OrgID.DataPropertyName = "OrgID";
+            this.txt_OrgID.HeaderText = "OrgID";
+            this.txt_OrgID.MinimumWidth = 8;
+            this.txt_OrgID.Name = "txt_OrgID";
+            this.txt_OrgID.ReadOnly = true;
+            this.txt_OrgID.Width = 150;
+            // 
+            // txt_Org_Status
+            // 
+            this.txt_Org_Status.DataPropertyName = "Org_Status";
+            this.txt_Org_Status.HeaderText = "Org_Status";
+            this.txt_Org_Status.MinimumWidth = 8;
+            this.txt_Org_Status.Name = "txt_Org_Status";
+            this.txt_Org_Status.ReadOnly = true;
+            this.txt_Org_Status.Width = 150;
+            // 
+            // txt_Inflow_Processed_By
+            // 
+            this.txt_Inflow_Processed_By.DataPropertyName = "Inflow_Processed_By";
+            this.txt_Inflow_Processed_By.HeaderText = "Inflow_Processed_By";
+            this.txt_Inflow_Processed_By.MinimumWidth = 8;
+            this.txt_Inflow_Processed_By.Name = "txt_Inflow_Processed_By";
+            this.txt_Inflow_Processed_By.ReadOnly = true;
+            this.txt_Inflow_Processed_By.Width = 150;
+            // 
+            // txt_Inflow_Processed_Date
+            // 
+            this.txt_Inflow_Processed_Date.DataPropertyName = "Inflow_Processed_Date";
+            this.txt_Inflow_Processed_Date.HeaderText = "Inflow_Processed_Date";
+            this.txt_Inflow_Processed_Date.MinimumWidth = 8;
+            this.txt_Inflow_Processed_Date.Name = "txt_Inflow_Processed_Date";
+            this.txt_Inflow_Processed_Date.ReadOnly = true;
+            this.txt_Inflow_Processed_Date.Width = 150;
+            // 
+            // txt_UBO_Validated_By
+            // 
+            this.txt_UBO_Validated_By.DataPropertyName = "UBO_Validated_By";
+            this.txt_UBO_Validated_By.HeaderText = "UBO_Validated_By";
+            this.txt_UBO_Validated_By.MinimumWidth = 8;
+            this.txt_UBO_Validated_By.Name = "txt_UBO_Validated_By";
+            this.txt_UBO_Validated_By.ReadOnly = true;
+            this.txt_UBO_Validated_By.Width = 150;
+            // 
+            // txt_UBO_Validated_Date
+            // 
+            this.txt_UBO_Validated_Date.DataPropertyName = "UBO_Validated_Date";
+            this.txt_UBO_Validated_Date.HeaderText = "UBO_Validated_Date";
+            this.txt_UBO_Validated_Date.MinimumWidth = 8;
+            this.txt_UBO_Validated_Date.Name = "txt_UBO_Validated_Date";
+            this.txt_UBO_Validated_Date.ReadOnly = true;
+            this.txt_UBO_Validated_Date.Width = 150;
+            // 
+            // txt_Query_Raised_Date
+            // 
+            this.txt_Query_Raised_Date.DataPropertyName = "Query_Raised_Date";
+            this.txt_Query_Raised_Date.HeaderText = "Query_Raised_Date";
+            this.txt_Query_Raised_Date.MinimumWidth = 8;
+            this.txt_Query_Raised_Date.Name = "txt_Query_Raised_Date";
+            this.txt_Query_Raised_Date.ReadOnly = true;
+            this.txt_Query_Raised_Date.Width = 150;
+            // 
+            // txt_ReQuery_Raised_Date
+            // 
+            this.txt_ReQuery_Raised_Date.DataPropertyName = "ReQuery_Raised_Date";
+            this.txt_ReQuery_Raised_Date.HeaderText = "ReQuery_Raised_Date";
+            this.txt_ReQuery_Raised_Date.MinimumWidth = 8;
+            this.txt_ReQuery_Raised_Date.Name = "txt_ReQuery_Raised_Date";
+            this.txt_ReQuery_Raised_Date.ReadOnly = true;
+            this.txt_ReQuery_Raised_Date.Width = 150;
+            // 
+            // txt_Query_Category
+            // 
+            this.txt_Query_Category.DataPropertyName = "Query_Category";
+            this.txt_Query_Category.HeaderText = "Query_Category";
+            this.txt_Query_Category.MinimumWidth = 8;
+            this.txt_Query_Category.Name = "txt_Query_Category";
+            this.txt_Query_Category.ReadOnly = true;
+            this.txt_Query_Category.Width = 150;
+            // 
+            // txt_Queried_For
+            // 
+            this.txt_Queried_For.DataPropertyName = "Queried_For";
+            this.txt_Queried_For.HeaderText = "Queried_For";
+            this.txt_Queried_For.MinimumWidth = 8;
+            this.txt_Queried_For.Name = "txt_Queried_For";
+            this.txt_Queried_For.ReadOnly = true;
+            this.txt_Queried_For.Width = 150;
+            // 
+            // txt_Query_Raised_By
+            // 
+            this.txt_Query_Raised_By.DataPropertyName = "Query_Raised_By";
+            this.txt_Query_Raised_By.HeaderText = "Query_Raised_By";
+            this.txt_Query_Raised_By.MinimumWidth = 8;
+            this.txt_Query_Raised_By.Name = "txt_Query_Raised_By";
+            this.txt_Query_Raised_By.ReadOnly = true;
+            this.txt_Query_Raised_By.Width = 150;
+            // 
+            // txt_Query_Resolved_Date
+            // 
+            this.txt_Query_Resolved_Date.DataPropertyName = "Query_Resolved_Date";
+            this.txt_Query_Resolved_Date.HeaderText = "Query_Resolved_Date";
+            this.txt_Query_Resolved_Date.MinimumWidth = 8;
+            this.txt_Query_Resolved_Date.Name = "txt_Query_Resolved_Date";
+            this.txt_Query_Resolved_Date.ReadOnly = true;
+            this.txt_Query_Resolved_Date.Width = 150;
+            // 
+            // txt_ReQuery_Raised_By
+            // 
+            this.txt_ReQuery_Raised_By.DataPropertyName = "ReQuery_Raised_By";
+            this.txt_ReQuery_Raised_By.HeaderText = "ReQuery_Raised_By";
+            this.txt_ReQuery_Raised_By.MinimumWidth = 8;
+            this.txt_ReQuery_Raised_By.Name = "txt_ReQuery_Raised_By";
+            this.txt_ReQuery_Raised_By.ReadOnly = true;
+            this.txt_ReQuery_Raised_By.Width = 150;
+            // 
+            // txt_ReQuery_Resolved_Date
+            // 
+            this.txt_ReQuery_Resolved_Date.DataPropertyName = "ReQuery_Resolved_Date";
+            this.txt_ReQuery_Resolved_Date.HeaderText = "ReQuery_Resolved_Date";
+            this.txt_ReQuery_Resolved_Date.MinimumWidth = 8;
+            this.txt_ReQuery_Resolved_Date.Name = "txt_ReQuery_Resolved_Date";
+            this.txt_ReQuery_Resolved_Date.ReadOnly = true;
+            this.txt_ReQuery_Resolved_Date.Width = 150;
+            // 
+            // txt_Volumes
+            // 
+            this.txt_Volumes.DataPropertyName = "Volumes";
+            this.txt_Volumes.HeaderText = "Volumes";
+            this.txt_Volumes.MinimumWidth = 8;
+            this.txt_Volumes.Name = "txt_Volumes";
+            this.txt_Volumes.ReadOnly = true;
+            this.txt_Volumes.Width = 150;
+            // 
+            // txt_Approved_Date
+            // 
+            this.txt_Approved_Date.DataPropertyName = "Approved_Date";
+            this.txt_Approved_Date.HeaderText = "Approved_Date";
+            this.txt_Approved_Date.MinimumWidth = 8;
+            this.txt_Approved_Date.Name = "txt_Approved_Date";
+            this.txt_Approved_Date.ReadOnly = true;
+            this.txt_Approved_Date.Width = 150;
+            // 
+            // txt_Approved_By
+            // 
+            this.txt_Approved_By.DataPropertyName = "Approved_By";
+            this.txt_Approved_By.HeaderText = "Approved_By";
+            this.txt_Approved_By.MinimumWidth = 8;
+            this.txt_Approved_By.Name = "txt_Approved_By";
+            this.txt_Approved_By.ReadOnly = true;
+            this.txt_Approved_By.Width = 150;
+            // 
+            // txt_PF_Risk_Category
+            // 
+            this.txt_PF_Risk_Category.DataPropertyName = "PF_Risk_Category";
+            this.txt_PF_Risk_Category.HeaderText = "PF_Risk_Category";
+            this.txt_PF_Risk_Category.MinimumWidth = 8;
+            this.txt_PF_Risk_Category.Name = "txt_PF_Risk_Category";
+            this.txt_PF_Risk_Category.ReadOnly = true;
+            this.txt_PF_Risk_Category.Width = 150;
+            // 
+            // txt_Other_Parties
+            // 
+            this.txt_Other_Parties.DataPropertyName = "Other_Parties";
+            this.txt_Other_Parties.HeaderText = "Other_Parties";
+            this.txt_Other_Parties.MinimumWidth = 8;
+            this.txt_Other_Parties.Name = "txt_Other_Parties";
+            this.txt_Other_Parties.ReadOnly = true;
+            this.txt_Other_Parties.Width = 150;
+            // 
+            // txt_GCID_In_ECS_Status
+            // 
+            this.txt_GCID_In_ECS_Status.DataPropertyName = "GCID_In_ECS_Status";
+            this.txt_GCID_In_ECS_Status.HeaderText = "GCID_In_ECS_Status";
+            this.txt_GCID_In_ECS_Status.MinimumWidth = 8;
+            this.txt_GCID_In_ECS_Status.Name = "txt_GCID_In_ECS_Status";
+            this.txt_GCID_In_ECS_Status.ReadOnly = true;
+            this.txt_GCID_In_ECS_Status.Width = 150;
+            // 
+            // txt_FCA_Updated_In_Eclipse
+            // 
+            this.txt_FCA_Updated_In_Eclipse.DataPropertyName = "FCA_Updated_In_Eclipse";
+            this.txt_FCA_Updated_In_Eclipse.HeaderText = "FCA_Updated_In_Eclipse";
+            this.txt_FCA_Updated_In_Eclipse.MinimumWidth = 8;
+            this.txt_FCA_Updated_In_Eclipse.Name = "txt_FCA_Updated_In_Eclipse";
+            this.txt_FCA_Updated_In_Eclipse.ReadOnly = true;
+            this.txt_FCA_Updated_In_Eclipse.Width = 150;
+            // 
+            // txt_Comments
+            // 
+            this.txt_Comments.DataPropertyName = "Comments";
+            this.txt_Comments.HeaderText = "Comments";
+            this.txt_Comments.MinimumWidth = 8;
+            this.txt_Comments.Name = "txt_Comments";
+            this.txt_Comments.ReadOnly = true;
+            this.txt_Comments.Width = 150;
+            // 
+            // txt_Sub_Categories_QC
+            // 
+            this.txt_Sub_Categories_QC.DataPropertyName = "Sub_Categories_QC";
+            this.txt_Sub_Categories_QC.HeaderText = "Sub_Categories_QC";
+            this.txt_Sub_Categories_QC.MinimumWidth = 8;
+            this.txt_Sub_Categories_QC.Name = "txt_Sub_Categories_QC";
+            this.txt_Sub_Categories_QC.ReadOnly = true;
+            this.txt_Sub_Categories_QC.Width = 150;
+            // 
+            // txt_Categories_QC
+            // 
+            this.txt_Categories_QC.DataPropertyName = "Categories_QC";
+            this.txt_Categories_QC.HeaderText = "Categories_QC";
+            this.txt_Categories_QC.MinimumWidth = 8;
+            this.txt_Categories_QC.Name = "txt_Categories_QC";
+            this.txt_Categories_QC.ReadOnly = true;
+            this.txt_Categories_QC.Width = 150;
+            // 
+            // txt_QC_Date
+            // 
+            this.txt_QC_Date.DataPropertyName = "QC_Date";
+            this.txt_QC_Date.HeaderText = "QC_Date";
+            this.txt_QC_Date.MinimumWidth = 8;
+            this.txt_QC_Date.Name = "txt_QC_Date";
+            this.txt_QC_Date.ReadOnly = true;
+            this.txt_QC_Date.Width = 150;
+            // 
+            // txt_QC_Done_By
+            // 
+            this.txt_QC_Done_By.DataPropertyName = "QC_Done_By";
+            this.txt_QC_Done_By.HeaderText = "QC_Done_By";
+            this.txt_QC_Done_By.MinimumWidth = 8;
+            this.txt_QC_Done_By.Name = "txt_QC_Done_By";
+            this.txt_QC_Done_By.ReadOnly = true;
+            this.txt_QC_Done_By.Width = 150;
+            // 
+            // txt_LastUpdatedDateTime
+            // 
+            this.txt_LastUpdatedDateTime.DataPropertyName = "LastUpdatedDateTime";
+            this.txt_LastUpdatedDateTime.HeaderText = "LastUpdatedDateTime";
+            this.txt_LastUpdatedDateTime.MinimumWidth = 8;
+            this.txt_LastUpdatedDateTime.Name = "txt_LastUpdatedDateTime";
+            this.txt_LastUpdatedDateTime.ReadOnly = true;
+            this.txt_LastUpdatedDateTime.Width = 150;
+            // 
+            // txt_EmpName
+            // 
+            this.txt_EmpName.DataPropertyName = "EmpName";
+            this.txt_EmpName.HeaderText = "EmpName";
+            this.txt_EmpName.MinimumWidth = 8;
+            this.txt_EmpName.Name = "txt_EmpName";
+            this.txt_EmpName.ReadOnly = true;
+            this.txt_EmpName.Width = 150;
+            // 
+            // txt_New_Client
+            // 
+            this.txt_New_Client.DataPropertyName = "New_Client";
+            this.txt_New_Client.HeaderText = "New / New Client";
+            this.txt_New_Client.MinimumWidth = 8;
+            this.txt_New_Client.Name = "txt_New_Client";
+            this.txt_New_Client.ReadOnly = true;
+            this.txt_New_Client.Width = 150;
+            // 
+            // txt_PF_Log
+            // 
+            this.txt_PF_Log.DataPropertyName = "PF_Log";
+            this.txt_PF_Log.HeaderText = "PF_Log";
+            this.txt_PF_Log.MinimumWidth = 8;
+            this.txt_PF_Log.Name = "txt_PF_Log";
+            this.txt_PF_Log.ReadOnly = true;
+            this.txt_PF_Log.Width = 150;
+            // 
+            // txt_Screening_Volumes
+            // 
+            this.txt_Screening_Volumes.DataPropertyName = "Screening_Volumes";
+            this.txt_Screening_Volumes.HeaderText = "Screening_Volumes";
+            this.txt_Screening_Volumes.MinimumWidth = 8;
+            this.txt_Screening_Volumes.Name = "txt_Screening_Volumes";
+            this.txt_Screening_Volumes.ReadOnly = true;
+            this.txt_Screening_Volumes.Width = 150;
             // 
             // PassFort_CVT
             // 
@@ -1372,7 +1535,6 @@
         private System.Windows.Forms.Label label_querydate;
         private System.Windows.Forms.DateTimePicker query_resolved_date;
         private System.Windows.Forms.Label label_queryresolveddate;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label_volumes;
         private System.Windows.Forms.ComboBox approved_by;
         private System.Windows.Forms.Label label_approvedby;
@@ -1420,6 +1582,12 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox screening_volumes;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker requery_raised_date;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox requery_raised_by;
+        private System.Windows.Forms.DateTimePicker requery_resolved_date;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_RequestID;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_PartyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Activity_Type;
@@ -1435,10 +1603,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_UBO_Validated_By;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_UBO_Validated_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Raised_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_ReQuery_Raised_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Queried_For;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Raised_By;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Resolved_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_ReQuery_Raised_By;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_ReQuery_Resolved_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Volumes;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Approved_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Approved_By;

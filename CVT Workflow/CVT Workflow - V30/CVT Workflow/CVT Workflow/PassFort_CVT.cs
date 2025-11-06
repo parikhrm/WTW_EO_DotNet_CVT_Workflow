@@ -37,6 +37,8 @@ namespace CVT_Workflow
             approvedby_list();
             requestorlocation_list();
             activitytype_list();
+            queryraisedby_list();
+            query_category_list();
             reset_overall();
         }
 
@@ -61,15 +63,18 @@ namespace CVT_Workflow
             ubo_validated_by.SelectedIndex = -1;
             ubo_validation_date.CustomFormat = " ";
             query_raised_date.CustomFormat = " ";
-            query_raised_date.Enabled = false;
+            //query_raised_date.Enabled = false;
+            requery_raised_date.CustomFormat = " ";
+            //requery_raised_date.Enabled = false;
             query_category.SelectedIndex = -1;
-            query_category.Enabled = false;
+            //query_category.Enabled = false;
             queried_for.SelectedIndex = -1;
-            queried_for.Enabled = false;
+            //queried_for.Enabled = false;
             query_raised_by.SelectedIndex = -1;
-            query_raised_by.Enabled = false;
+            requery_raised_by.SelectedIndex = -1;
+            //query_raised_by.Enabled = false;
             query_resolved_date.CustomFormat = " ";
-            checkBox3.Checked = false;
+            requery_resolved_date.CustomFormat = " ";
             volumes.Text = string.Empty;
             approved_date.CustomFormat = " ";
             approved_by.SelectedIndex = -1;
@@ -213,17 +218,25 @@ namespace CVT_Workflow
             try
             {
                 QueryRaisedBy obj_queryraisedby = new QueryRaisedBy();
+                QueryRaisedBy obj_requeryraisedby = new QueryRaisedBy();
+
                 DataTable dtaa_raisedby = new DataTable();
+                DataTable dtaa_reraisedby = new DataTable();
 
                 obj_queryraisedby.queryraisedby_list(dtaa_raisedby);
+                obj_requeryraisedby.queryraisedby_list(dtaa_reraisedby);
 
                 query_raised_by.DataSource = dtaa_raisedby;
                 query_raised_by.DisplayMember = "QueryResolvedBy";
+
+                requery_raised_by.DataSource = dtaa_reraisedby;
+                requery_raised_by.DisplayMember = "QueryResolvedBy";
 
 
                 conn.Close();
 
                 query_raised_by.SelectedIndex = -1;
+                requery_raised_by.SelectedIndex = -1;
 
             }
             catch (Exception ab)
@@ -396,6 +409,29 @@ namespace CVT_Workflow
             }
         }
 
+        public void query_category_list()
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+
+            try
+            {
+                QueryCategory obj_querycategory = new QueryCategory();
+                DataTable dtaa = new DataTable();
+                obj_querycategory.querycategory_list(dtaa);
+                query_category.DataSource = dtaa;
+                query_category.DisplayMember = "QueryCategory";
+                conn.Close();
+                query_category.SelectedIndex = -1;
+            }
+            catch (Exception ab)
+            {
+                MessageBox.Show("Error Generated Details: " + ab.ToString());
+            }
+        }
+
         public void role_list()
         {
             if (conn.State == ConnectionState.Open)
@@ -531,7 +567,7 @@ namespace CVT_Workflow
                 if (string.IsNullOrEmpty(searchby_partyname.Text) && string.IsNullOrEmpty(searchby_orgid.Text))
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "select top 100 RequestID,PartyName,Received_Date,Requestor_Email_Address,Legal_Entity_Name,Role,OrgID,Org_Status,Inflow_Processed_By,Inflow_Processed_Date,UBO_Validated_By,UBO_Validated_Date,Query_Raised_Date,Query_Category,Queried_For,Query_Raised_By,Query_Resolved_Date,Volumes,Approved_Date,Approved_By,PF_Risk_Category,Other_Parties,GCID_In_ECS_Status,FCA_Updated_In_Eclipse,Comments,Sub_Categories_QC,Categories_QC,QC_Date,QC_Done_By,a.LastUpdatedDateTime,b.EmpName,Party_Location,New_Client,PF_Log,Activity_Type,Screening_Volumes from dbo.tbl_passfort_cvt_daily_dotnet a with(nolock)  inner join dbo.tbl_emp_details b with(nolock) on a.lastupdatedby = substring(b.intid,5,len(b.intid)) where a.IsDeleted = 0 and a.lastupdatedby = @lastupdatedby";
+                    cmd.CommandText = "select top 100 RequestID,PartyName,Received_Date,Requestor_Email_Address,Legal_Entity_Name,Role,OrgID,Org_Status,Inflow_Processed_By,Inflow_Processed_Date,UBO_Validated_By,UBO_Validated_Date,Query_Raised_Date,Query_Category,Queried_For,Query_Raised_By,Query_Resolved_Date,Volumes,Approved_Date,Approved_By,PF_Risk_Category,Other_Parties,GCID_In_ECS_Status,FCA_Updated_In_Eclipse,Comments,Sub_Categories_QC,Categories_QC,QC_Date,QC_Done_By,a.LastUpdatedDateTime,b.EmpName,Party_Location,New_Client,PF_Log,Activity_Type,Screening_Volumes,ReQuery_Raised_Date,ReQuery_Raised_By,ReQuery_Resolved_Date from dbo.tbl_passfort_cvt_daily_dotnet a with(nolock)  inner join dbo.tbl_emp_details b with(nolock) on a.lastupdatedby = substring(b.intid,5,len(b.intid)) where a.IsDeleted = 0 and a.lastupdatedby = @lastupdatedby";
                     cmd.Parameters.AddWithValue("@lastupdatedby", Environment.UserName.ToString());
                 }
                 else
@@ -567,30 +603,6 @@ namespace CVT_Workflow
             }
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox3.Checked == true)
-            {
-                querycategory_list();
-                queryraisedby_list();
-                query_raised_date.Enabled = true;
-                query_category.Enabled = true;
-                queried_for.Enabled = true;
-                query_raised_by.Enabled = true;
-            }
-            else
-            {
-                query_raised_date.Enabled = false;
-                query_category.Enabled = false;
-                queried_for.Enabled = false;
-                query_category.SelectedIndex = -1;
-                queried_for.SelectedIndex = -1;
-                query_raised_by.Enabled = false;
-                query_raised_by.SelectedIndex = -1;
-                query_raised_date.CustomFormat = " ";
-            }
-        }
-
         private void querycategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(query_category.Text))
@@ -598,8 +610,6 @@ namespace CVT_Workflow
                 autopopulate_queriedfor_list();
             }
         }
-
-     
 
         private void insert_Click(object sender, EventArgs e)
         {
@@ -641,19 +651,53 @@ namespace CVT_Workflow
                 {
                     cmd.Parameters.AddWithValue("@UBO_Validated_Date", ubo_validation_date.Value.Date);
                 }
-                if (checkBox3.Checked == false)
+                if (query_raised_date.Text.Trim() == string.Empty)
                 {
-                    cmd.Parameters.AddWithValue("@Query_Raised_Date", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Query_Category", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Queried_For",DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Query_Raised_By", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Query_Raised_Date",DBNull.Value);
                 }
                 else
                 {
                     cmd.Parameters.AddWithValue("@Query_Raised_Date", query_raised_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Query_Category", query_category.Text);
-                    cmd.Parameters.AddWithValue("@Queried_For",queried_for.Text);
+                }
+                if (requery_raised_date.Text.Trim() == string.Empty)
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_Date", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_Date", requery_raised_date.Value.Date);
+                }
+                if (string.IsNullOrEmpty(query_raised_by.Text))
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By",DBNull.Value);
+                }
+                else
+                {
                     cmd.Parameters.AddWithValue("@Query_Raised_By", query_raised_by.Text);
+                }
+                if (string.IsNullOrEmpty(requery_raised_by.Text))
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By", requery_raised_by.Text);
+                }
+                if (string.IsNullOrEmpty(queried_for.Text))
+                {
+                    cmd.Parameters.AddWithValue("@Queried_For",DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Queried_For", queried_for.Text);
+                }
+                if(string.IsNullOrEmpty(query_category.Text))
+                {
+                    cmd.Parameters.AddWithValue("@Query_Category",DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Query_Category", query_category.Text);
                 }
                 if (query_resolved_date.Text.Trim() == string.Empty)
                 {
@@ -662,6 +706,14 @@ namespace CVT_Workflow
                 else
                 {
                     cmd.Parameters.AddWithValue("@Query_Resolved_Date", query_resolved_date.Value.Date);
+                }
+                if (requery_resolved_date.Text.Trim() == string.Empty)
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Resolved_Date", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Resolved_Date", requery_resolved_date.Value.Date);
                 }
                 if (string.IsNullOrEmpty(volumes.Text))
                 {
@@ -841,25 +893,49 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Query Resolved date cannot be more than today's date");
                 }
+                else if (requery_raised_date.Value.Date > current_datetime.Value.Date)
+                {
+                    MessageBox.Show("Re-Query Raised date cannot be more than today's date");
+                }
+                else if (requery_resolved_date.Value.Date > current_datetime.Value.Date)
+                {
+                    MessageBox.Show("Re-Query Resolved date cannot be more than today's date");
+                }
                 else if (approved_date.Value.Date > current_datetime.Value.Date)
                 {
                     MessageBox.Show("Approved date cannot be more than today's date");
                 }
-                else if (checkBox3.Checked && query_raised_date.Text.Trim() == string.Empty)
-                {
-                    MessageBox.Show("Please update Query Raised Date");
-                }
-                else if (checkBox3.Checked && string.IsNullOrEmpty(query_category.Text))
+                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
                 {
                     MessageBox.Show("Please update Query Category");
                 }
-                else if (checkBox3.Checked && string.IsNullOrEmpty(queried_for.Text))
+                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
+                {
+                    MessageBox.Show("Please update Query Category");
+                }
+                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
                     MessageBox.Show("Please update Queried For");
                 }
-                else if (checkBox3.Checked && string.IsNullOrEmpty(query_raised_by.Text))
+                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
-                    MessageBox.Show("Please update Query Raised by");
+                    MessageBox.Show("Please update Queried For");
+                }
+                else if(query_resolved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(query_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Query Raised By");
+                }
+                else if (requery_resolved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(requery_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Re-Query Raised By");
+                }
+                else if (query_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(query_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Query Resolved Date");
+                }
+                else if (requery_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(requery_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Re-Query Resolved Date");
                 }
                 else if (approved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(approved_by.Text))
                 {
@@ -906,7 +982,7 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Please update New client");
                 }
-                else if(org_status.Text == "Pending CVT SPOE/Approval" && inflow_processed_date.Text.Trim() == string.Empty)
+                else if (org_status.Text == "Pending CVT SPOE/Approval" && inflow_processed_date.Text.Trim() == string.Empty)
                 {
                     MessageBox.Show("Please update Inflow Processed Date");
                 }
@@ -970,19 +1046,53 @@ namespace CVT_Workflow
                 {
                     cmd.Parameters.AddWithValue("@UBO_Validated_Date", ubo_validation_date.Value.Date);
                 }
-                if (checkBox3.Checked == false)
+                if (query_raised_date.Text.Trim() == string.Empty)
                 {
                     cmd.Parameters.AddWithValue("@Query_Raised_Date", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Query_Category", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Queried_For",DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Query_Raised_By", DBNull.Value);
                 }
                 else
                 {
                     cmd.Parameters.AddWithValue("@Query_Raised_Date", query_raised_date.Value.Date);
-                    cmd.Parameters.AddWithValue("@Query_Category", query_category.Text);
-                    cmd.Parameters.AddWithValue("@Queried_For",queried_for.Text);
+                }
+                if (requery_raised_date.Text.Trim() == string.Empty)
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_Date", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_Date", requery_raised_date.Value.Date);
+                }
+                if (string.IsNullOrEmpty(query_raised_by.Text))
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By", DBNull.Value);
+                }
+                else
+                {
                     cmd.Parameters.AddWithValue("@Query_Raised_By", query_raised_by.Text);
+                }
+                if (string.IsNullOrEmpty(requery_raised_by.Text))
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Raised_By", requery_raised_by.Text);
+                }
+                if (string.IsNullOrEmpty(queried_for.Text))
+                {
+                    cmd.Parameters.AddWithValue("@Queried_For", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Queried_For", queried_for.Text);
+                }
+                if (string.IsNullOrEmpty(query_category.Text))
+                {
+                    cmd.Parameters.AddWithValue("@Query_Category", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Query_Category", query_category.Text);
                 }
                 if (query_resolved_date.Text.Trim() == string.Empty)
                 {
@@ -991,6 +1101,14 @@ namespace CVT_Workflow
                 else
                 {
                     cmd.Parameters.AddWithValue("@Query_Resolved_Date", query_resolved_date.Value.Date);
+                }
+                if (requery_resolved_date.Text.Trim() == string.Empty)
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Resolved_Date", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ReQuery_Resolved_Date", requery_resolved_date.Value.Date);
                 }
                 if (string.IsNullOrEmpty(volumes.Text))
                 {
@@ -1109,10 +1227,6 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Please update Party Name");
                 }
-                else if (string.IsNullOrEmpty(activity_type.Text))
-                {
-                    MessageBox.Show("Please update Activity Type");
-                }
                 else if (received_date.Text.Trim() == string.Empty)
                 {
                     MessageBox.Show("Please update Received Date");
@@ -1169,25 +1283,49 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Query Resolved date cannot be more than today's date");
                 }
+                else if (requery_raised_date.Value.Date > current_datetime.Value.Date)
+                {
+                    MessageBox.Show("Re-Query Raised date cannot be more than today's date");
+                }
+                else if (requery_resolved_date.Value.Date > current_datetime.Value.Date)
+                {
+                    MessageBox.Show("Re-Query Resolved date cannot be more than today's date");
+                }
                 else if (approved_date.Value.Date > current_datetime.Value.Date)
                 {
                     MessageBox.Show("Approved date cannot be more than today's date");
                 }
-                else if (checkBox3.Checked && query_raised_date.Text.Trim() == string.Empty)
-                {
-                    MessageBox.Show("Please update Query Raised Date");
-                }
-                else if (checkBox3.Checked && string.IsNullOrEmpty(query_category.Text))
+                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
                 {
                     MessageBox.Show("Please update Query Category");
                 }
-                else if (checkBox3.Checked && string.IsNullOrEmpty(queried_for.Text))
+                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(query_category.Text))
+                {
+                    MessageBox.Show("Please update Query Category");
+                }
+                else if (query_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
                     MessageBox.Show("Please update Queried For");
                 }
-                else if (checkBox3.Checked && string.IsNullOrEmpty(query_raised_by.Text))
+                else if (requery_raised_date.Text.Trim() == string.Empty && string.IsNullOrEmpty(queried_for.Text))
                 {
-                    MessageBox.Show("Please update Query Raised by");
+                    MessageBox.Show("Please update Queried For");
+                }
+                else if (query_resolved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(query_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Query Raised By");
+                }
+                else if (requery_resolved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(requery_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Re-Query Raised By");
+                }
+                else if (query_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(query_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Query Resolved Date");
+                }
+                else if (requery_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(requery_raised_by.Text))
+                {
+                    MessageBox.Show("Please update Re-Query Resolved Date");
                 }
                 else if (approved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(approved_by.Text))
                 {
@@ -1300,16 +1438,53 @@ namespace CVT_Workflow
                     }
                     if (string.IsNullOrEmpty(row.Cells["txt_Query_Raised_Date"].Value.ToString()))
                     {
-                        checkBox3.Checked = false;
+                        query_raised_date.CustomFormat = " ";
                     }
                     else
                     {
-                        checkBox3.Checked = true;
                         query_raised_date.Text = row.Cells["txt_Query_Raised_Date"].Value.ToString();
                         query_raised_date.CustomFormat = "dd-MMMM-yyyy";
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_ReQuery_Raised_Date"].Value.ToString()))
+                    {
+                        requery_raised_date.CustomFormat = " ";
+                    }
+                    else
+                    {
+                        requery_raised_date.Text = row.Cells["txt_ReQuery_Raised_Date"].Value.ToString();
+                        requery_raised_date.CustomFormat = "dd-MMMM-yyyy";
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Query_Category"].Value.ToString()))
+                    {
+                        query_category.SelectedIndex = -1;
+                    }
+                    else
+                    {
                         query_category.Text = row.Cells["txt_Query_Category"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Queried_For"].Value.ToString()))
+                    {
+                        queried_for.SelectedIndex = -1;
+                    }
+                    else
+                    {
                         queried_for.Text = row.Cells["txt_Queried_For"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Query_Raised_By"].Value.ToString()))
+                    {
+                        query_raised_by.SelectedIndex = -1;
+                    }
+                    else
+                    {
                         query_raised_by.Text = row.Cells["txt_Query_Raised_By"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_ReQuery_Raised_By"].Value.ToString()))
+                    {
+                        requery_raised_by.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        requery_raised_by.Text = row.Cells["txt_ReQuery_Raised_By"].Value.ToString();
                     }
                     if (string.IsNullOrEmpty(row.Cells["txt_Query_Resolved_Date"].Value.ToString()))
                     {
@@ -1319,6 +1494,15 @@ namespace CVT_Workflow
                     {
                         query_resolved_date.Text = row.Cells["txt_Query_Resolved_Date"].Value.ToString();
                         query_resolved_date.CustomFormat = "dd-MMMM-yyyy";
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_ReQuery_Resolved_Date"].Value.ToString()))
+                    {
+                        requery_resolved_date.CustomFormat = " ";
+                    }
+                    else
+                    {
+                        requery_resolved_date.Text = row.Cells["txt_ReQuery_Resolved_Date"].Value.ToString();
+                        requery_resolved_date.CustomFormat = "dd-MMMM-yyyy";
                     }
                     if (string.IsNullOrEmpty(row.Cells["txt_Volumes"].Value.ToString()))
                     {
@@ -1634,8 +1818,31 @@ namespace CVT_Workflow
             //pf_log.Select(0, 0);
         }
 
+        private void requery_raised_date_ValueChanged(object sender, EventArgs e)
+        {
+            requery_raised_date.CustomFormat = "dd-MMMM-yyyy";
+        }
 
+        private void requery_raised_date_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                requery_raised_date.CustomFormat = " ";
+            }
+        }
 
-       
+        
+        private void requery_resolved_date_ValueChanged(object sender, EventArgs e)
+        {
+            requery_resolved_date.CustomFormat = "dd-MMMM-yyyy";
+        }
+
+        private void requery_resolved_date_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                requery_resolved_date.CustomFormat = " ";
+            }
+        }
     }
 }
