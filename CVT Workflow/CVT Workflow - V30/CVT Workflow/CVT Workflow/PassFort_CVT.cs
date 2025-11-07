@@ -1489,6 +1489,14 @@ namespace CVT_Workflow
                     {
                         query_category.Text = row.Cells["txt_Query_Category"].Value.ToString();
                     }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Query_Category_ReQuery"].Value.ToString()))
+                    {
+                        query_category_requery.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        query_category_requery.Text = row.Cells["txt_Query_Category_ReQuery"].Value.ToString();
+                    }
                     if (string.IsNullOrEmpty(row.Cells["txt_Queried_For"].Value.ToString()))
                     {
                         queried_for.SelectedIndex = -1;
@@ -1496,6 +1504,14 @@ namespace CVT_Workflow
                     else
                     {
                         queried_for.Text = row.Cells["txt_Queried_For"].Value.ToString();
+                    }
+                    if (string.IsNullOrEmpty(row.Cells["txt_Queried_For_ReQuery"].Value.ToString()))
+                    {
+                        queried_for_requery.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        queried_for_requery.Text = row.Cells["txt_Queried_For_ReQuery"].Value.ToString();
                     }
                     if (string.IsNullOrEmpty(row.Cells["txt_Query_Raised_By"].Value.ToString()))
                     {
