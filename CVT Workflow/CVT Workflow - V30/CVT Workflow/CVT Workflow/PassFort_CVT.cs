@@ -929,14 +929,6 @@ namespace CVT_Workflow
                 {
                     MessageBox.Show("Please update Re-Query Raised By");
                 }
-                else if (query_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(query_raised_by.Text))
-                {
-                    MessageBox.Show("Please update Query Resolved Date");
-                }
-                else if (requery_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(requery_raised_by.Text))
-                {
-                    MessageBox.Show("Please update Re-Query Resolved Date");
-                }
                 else if (approved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(approved_by.Text))
                 {
                     MessageBox.Show("Please update Approved by");
@@ -1318,14 +1310,6 @@ namespace CVT_Workflow
                 else if (requery_resolved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(requery_raised_by.Text))
                 {
                     MessageBox.Show("Please update Re-Query Raised By");
-                }
-                else if (query_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(query_raised_by.Text))
-                {
-                    MessageBox.Show("Please update Query Resolved Date");
-                }
-                else if (requery_resolved_date.Text.Trim() == string.Empty && !string.IsNullOrEmpty(requery_raised_by.Text))
-                {
-                    MessageBox.Show("Please update Re-Query Resolved Date");
                 }
                 else if (approved_date.Text.Trim() != string.Empty && string.IsNullOrEmpty(approved_by.Text))
                 {
