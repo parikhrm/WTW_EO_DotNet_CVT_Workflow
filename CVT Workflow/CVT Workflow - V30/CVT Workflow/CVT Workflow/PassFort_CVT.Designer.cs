@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.requery_resolved_date = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.requery_raised_by = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.requery_raised_date = new System.Windows.Forms.DateTimePicker();
@@ -115,6 +113,10 @@
             this.current_datetime = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.queried_for_requery = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.query_category_requery = new System.Windows.Forms.ComboBox();
             this.txt_RequestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_PartyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Activity_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,11 +134,12 @@
             this.txt_Query_Raised_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_ReQuery_Raised_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Query_Category_ReQuery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Queried_For = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_Queried_For_ReQuery = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Raised_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Query_Resolved_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_ReQuery_Raised_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_ReQuery_Resolved_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Volumes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Approved_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Approved_By = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,8 +163,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.requery_resolved_date);
+            this.groupBox1.Controls.Add(this.queried_for_requery);
             this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.query_category_requery);
             this.groupBox1.Controls.Add(this.requery_raised_by);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.requery_raised_date);
@@ -244,43 +249,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // requery_resolved_date
-            // 
-            this.requery_resolved_date.CustomFormat = " ";
-            this.requery_resolved_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.requery_resolved_date.Location = new System.Drawing.Point(1457, 271);
-            this.requery_resolved_date.Name = "requery_resolved_date";
-            this.requery_resolved_date.Size = new System.Drawing.Size(260, 26);
-            this.requery_resolved_date.TabIndex = 78;
-            this.requery_resolved_date.ValueChanged += new System.EventHandler(this.requery_resolved_date_ValueChanged);
-            this.requery_resolved_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.requery_resolved_date_KeyDown);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1265, 274);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(186, 20);
-            this.label12.TabIndex = 77;
-            this.label12.Text = "Re-Query Resolved Date";
-            // 
             // requery_raised_by
             // 
             this.requery_raised_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.requery_raised_by.FormattingEnabled = true;
-            this.requery_raised_by.Location = new System.Drawing.Point(1005, 271);
+            this.requery_raised_by.Location = new System.Drawing.Point(94, 327);
             this.requery_raised_by.Name = "requery_raised_by";
-            this.requery_raised_by.Size = new System.Drawing.Size(217, 28);
+            this.requery_raised_by.Size = new System.Drawing.Size(192, 28);
             this.requery_raised_by.TabIndex = 75;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(845, 274);
+            this.label11.Location = new System.Drawing.Point(7, 329);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(153, 20);
+            this.label11.Size = new System.Drawing.Size(81, 40);
             this.label11.TabIndex = 74;
-            this.label11.Text = "Re-Query Raised By";
+            this.label11.Text = "Re-Query \r\nRaised By";
             // 
             // requery_raised_date
             // 
@@ -399,7 +384,7 @@
             // 
             // volumes
             // 
-            this.volumes.Location = new System.Drawing.Point(99, 330);
+            this.volumes.Location = new System.Drawing.Point(1188, 549);
             this.volumes.Name = "volumes";
             this.volumes.Size = new System.Drawing.Size(100, 26);
             this.volumes.TabIndex = 42;
@@ -569,7 +554,7 @@
             "Requested",
             "Available",
             "Created"});
-            this.gcid_in_ecs_status.Location = new System.Drawing.Point(1556, 329);
+            this.gcid_in_ecs_status.Location = new System.Drawing.Point(1596, 328);
             this.gcid_in_ecs_status.Name = "gcid_in_ecs_status";
             this.gcid_in_ecs_status.Size = new System.Drawing.Size(121, 28);
             this.gcid_in_ecs_status.TabIndex = 52;
@@ -577,7 +562,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1445, 329);
+            this.label7.Location = new System.Drawing.Point(1489, 327);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 40);
             this.label7.TabIndex = 51;
@@ -590,7 +575,7 @@
             this.other_parties.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.other_parties.Location = new System.Drawing.Point(1312, 329);
+            this.other_parties.Location = new System.Drawing.Point(1371, 329);
             this.other_parties.Name = "other_parties";
             this.other_parties.Size = new System.Drawing.Size(112, 28);
             this.other_parties.TabIndex = 50;
@@ -598,7 +583,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1200, 329);
+            this.label6.Location = new System.Drawing.Point(1263, 333);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 20);
             this.label6.TabIndex = 49;
@@ -612,7 +597,7 @@
             "High",
             "Medium",
             "Low"});
-            this.pf_risk_category.Location = new System.Drawing.Point(1048, 327);
+            this.pf_risk_category.Location = new System.Drawing.Point(1126, 330);
             this.pf_risk_category.Name = "pf_risk_category";
             this.pf_risk_category.Size = new System.Drawing.Size(131, 28);
             this.pf_risk_category.TabIndex = 48;
@@ -621,7 +606,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(969, 329);
+            this.label17.Location = new System.Drawing.Point(1047, 329);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(73, 40);
             this.label17.TabIndex = 47;
@@ -631,7 +616,7 @@
             // 
             this.approved_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.approved_by.FormattingEnabled = true;
-            this.approved_by.Location = new System.Drawing.Point(688, 327);
+            this.approved_by.Location = new System.Drawing.Point(768, 330);
             this.approved_by.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.approved_by.Name = "approved_by";
             this.approved_by.Size = new System.Drawing.Size(271, 28);
@@ -641,7 +626,7 @@
             // label_approvedby
             // 
             this.label_approvedby.AutoSize = true;
-            this.label_approvedby.Location = new System.Drawing.Point(580, 329);
+            this.label_approvedby.Location = new System.Drawing.Point(658, 332);
             this.label_approvedby.Name = "label_approvedby";
             this.label_approvedby.Size = new System.Drawing.Size(99, 20);
             this.label_approvedby.TabIndex = 45;
@@ -651,7 +636,7 @@
             // 
             this.approved_date.CustomFormat = " ";
             this.approved_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.approved_date.Location = new System.Drawing.Point(333, 328);
+            this.approved_date.Location = new System.Drawing.Point(420, 333);
             this.approved_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.approved_date.Name = "approved_date";
             this.approved_date.Size = new System.Drawing.Size(232, 26);
@@ -662,7 +647,7 @@
             // label_approveddate
             // 
             this.label_approveddate.AutoSize = true;
-            this.label_approveddate.Location = new System.Drawing.Point(205, 330);
+            this.label_approveddate.Location = new System.Drawing.Point(295, 333);
             this.label_approveddate.Name = "label_approveddate";
             this.label_approveddate.Size = new System.Drawing.Size(116, 20);
             this.label_approveddate.TabIndex = 43;
@@ -671,7 +656,7 @@
             // label_volumes
             // 
             this.label_volumes.AutoSize = true;
-            this.label_volumes.Location = new System.Drawing.Point(7, 330);
+            this.label_volumes.Location = new System.Drawing.Point(1096, 549);
             this.label_volumes.Name = "label_volumes";
             this.label_volumes.Size = new System.Drawing.Size(71, 20);
             this.label_volumes.TabIndex = 41;
@@ -692,7 +677,7 @@
             // label_queryresolveddate
             // 
             this.label_queryresolveddate.AutoSize = true;
-            this.label_queryresolveddate.Location = new System.Drawing.Point(1261, 230);
+            this.label_queryresolveddate.Location = new System.Drawing.Point(1282, 230);
             this.label_queryresolveddate.Name = "label_queryresolveddate";
             this.label_queryresolveddate.Size = new System.Drawing.Size(160, 20);
             this.label_queryresolveddate.TabIndex = 39;
@@ -702,7 +687,7 @@
             // 
             this.query_raised_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.query_raised_by.FormattingEnabled = true;
-            this.query_raised_by.Location = new System.Drawing.Point(1004, 233);
+            this.query_raised_by.Location = new System.Drawing.Point(1457, 274);
             this.query_raised_by.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.query_raised_by.Name = "query_raised_by";
             this.query_raised_by.Size = new System.Drawing.Size(218, 28);
@@ -712,7 +697,7 @@
             // label_queryraisedby
             // 
             this.label_queryraisedby.AutoSize = true;
-            this.label_queryraisedby.Location = new System.Drawing.Point(845, 233);
+            this.label_queryraisedby.Location = new System.Drawing.Point(1297, 274);
             this.label_queryraisedby.Name = "label_queryraisedby";
             this.label_queryraisedby.Size = new System.Drawing.Size(127, 20);
             this.label_queryraisedby.TabIndex = 36;
@@ -722,7 +707,7 @@
             // 
             this.queried_for.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.queried_for.FormattingEnabled = true;
-            this.queried_for.Location = new System.Drawing.Point(555, 266);
+            this.queried_for.Location = new System.Drawing.Point(555, 272);
             this.queried_for.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.queried_for.Name = "queried_for";
             this.queried_for.Size = new System.Drawing.Size(274, 28);
@@ -731,7 +716,7 @@
             // label_queriedfor
             // 
             this.label_queriedfor.AutoSize = true;
-            this.label_queriedfor.Location = new System.Drawing.Point(445, 266);
+            this.label_queriedfor.Location = new System.Drawing.Point(451, 274);
             this.label_queriedfor.Name = "label_queriedfor";
             this.label_queriedfor.Size = new System.Drawing.Size(93, 20);
             this.label_queriedfor.TabIndex = 34;
@@ -1027,11 +1012,12 @@
             this.txt_Query_Raised_Date,
             this.txt_ReQuery_Raised_Date,
             this.txt_Query_Category,
+            this.txt_Query_Category_ReQuery,
             this.txt_Queried_For,
+            this.txt_Queried_For_ReQuery,
             this.txt_Query_Raised_By,
             this.txt_Query_Resolved_Date,
             this.txt_ReQuery_Raised_By,
-            this.txt_ReQuery_Resolved_Date,
             this.txt_Volumes,
             this.txt_Approved_Date,
             this.txt_Approved_By,
@@ -1119,6 +1105,45 @@
             this.button2.Text = "TAT";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // queried_for_requery
+            // 
+            this.queried_for_requery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.queried_for_requery.FormattingEnabled = true;
+            this.queried_for_requery.Location = new System.Drawing.Point(1041, 276);
+            this.queried_for_requery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.queried_for_requery.Name = "queried_for_requery";
+            this.queried_for_requery.Size = new System.Drawing.Size(233, 28);
+            this.queried_for_requery.TabIndex = 79;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(862, 276);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(160, 20);
+            this.label12.TabIndex = 78;
+            this.label12.Text = "Queried For ReQuery";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(849, 235);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(186, 20);
+            this.label13.TabIndex = 76;
+            this.label13.Text = "Query Category ReQuery";
+            // 
+            // query_category_requery
+            // 
+            this.query_category_requery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.query_category_requery.FormattingEnabled = true;
+            this.query_category_requery.Location = new System.Drawing.Point(1041, 235);
+            this.query_category_requery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.query_category_requery.Name = "query_category_requery";
+            this.query_category_requery.Size = new System.Drawing.Size(237, 28);
+            this.query_category_requery.TabIndex = 77;
+            this.query_category_requery.SelectedIndexChanged += new System.EventHandler(this.query_category_requery_SelectedIndexChanged);
             // 
             // txt_RequestID
             // 
@@ -1273,6 +1298,15 @@
             this.txt_Query_Category.ReadOnly = true;
             this.txt_Query_Category.Width = 150;
             // 
+            // txt_Query_Category_ReQuery
+            // 
+            this.txt_Query_Category_ReQuery.DataPropertyName = "Query_Category_ReQuery";
+            this.txt_Query_Category_ReQuery.HeaderText = "Query_Category_ReQuery";
+            this.txt_Query_Category_ReQuery.MinimumWidth = 8;
+            this.txt_Query_Category_ReQuery.Name = "txt_Query_Category_ReQuery";
+            this.txt_Query_Category_ReQuery.ReadOnly = true;
+            this.txt_Query_Category_ReQuery.Width = 150;
+            // 
             // txt_Queried_For
             // 
             this.txt_Queried_For.DataPropertyName = "Queried_For";
@@ -1281,6 +1315,15 @@
             this.txt_Queried_For.Name = "txt_Queried_For";
             this.txt_Queried_For.ReadOnly = true;
             this.txt_Queried_For.Width = 150;
+            // 
+            // txt_Queried_For_ReQuery
+            // 
+            this.txt_Queried_For_ReQuery.DataPropertyName = "Queried_For_ReQuery";
+            this.txt_Queried_For_ReQuery.HeaderText = "Queried_For_ReQuery";
+            this.txt_Queried_For_ReQuery.MinimumWidth = 8;
+            this.txt_Queried_For_ReQuery.Name = "txt_Queried_For_ReQuery";
+            this.txt_Queried_For_ReQuery.ReadOnly = true;
+            this.txt_Queried_For_ReQuery.Width = 150;
             // 
             // txt_Query_Raised_By
             // 
@@ -1308,15 +1351,6 @@
             this.txt_ReQuery_Raised_By.Name = "txt_ReQuery_Raised_By";
             this.txt_ReQuery_Raised_By.ReadOnly = true;
             this.txt_ReQuery_Raised_By.Width = 150;
-            // 
-            // txt_ReQuery_Resolved_Date
-            // 
-            this.txt_ReQuery_Resolved_Date.DataPropertyName = "ReQuery_Resolved_Date";
-            this.txt_ReQuery_Resolved_Date.HeaderText = "ReQuery_Resolved_Date";
-            this.txt_ReQuery_Resolved_Date.MinimumWidth = 8;
-            this.txt_ReQuery_Resolved_Date.Name = "txt_ReQuery_Resolved_Date";
-            this.txt_ReQuery_Resolved_Date.ReadOnly = true;
-            this.txt_ReQuery_Resolved_Date.Width = 150;
             // 
             // txt_Volumes
             // 
@@ -1586,8 +1620,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox requery_raised_by;
-        private System.Windows.Forms.DateTimePicker requery_resolved_date;
+        private System.Windows.Forms.ComboBox queried_for_requery;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox query_category_requery;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_RequestID;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_PartyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Activity_Type;
@@ -1605,11 +1641,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Raised_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_ReQuery_Raised_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Category_ReQuery;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Queried_For;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt_Queried_For_ReQuery;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Raised_By;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Query_Resolved_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_ReQuery_Raised_By;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txt_ReQuery_Resolved_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Volumes;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Approved_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt_Approved_By;
