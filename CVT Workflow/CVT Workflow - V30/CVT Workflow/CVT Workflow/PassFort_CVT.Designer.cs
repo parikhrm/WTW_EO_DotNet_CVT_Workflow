@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.queried_for_requery = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.query_category_requery = new System.Windows.Forms.ComboBox();
             this.requery_raised_by = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.requery_raised_date = new System.Windows.Forms.DateTimePicker();
@@ -106,17 +110,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.mainpage = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.searchby_partyname = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.searchby_orgid = new System.Windows.Forms.TextBox();
-            this.current_datetime = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.queried_for_requery = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.query_category_requery = new System.Windows.Forms.ComboBox();
             this.txt_RequestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_PartyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Activity_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -157,6 +150,13 @@
             this.txt_New_Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_PF_Log = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Screening_Volumes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchby_partyname = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.searchby_orgid = new System.Windows.Forms.TextBox();
+            this.current_datetime = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -249,6 +249,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // queried_for_requery
+            // 
+            this.queried_for_requery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.queried_for_requery.FormattingEnabled = true;
+            this.queried_for_requery.Location = new System.Drawing.Point(1041, 276);
+            this.queried_for_requery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.queried_for_requery.Name = "queried_for_requery";
+            this.queried_for_requery.Size = new System.Drawing.Size(233, 28);
+            this.queried_for_requery.TabIndex = 79;
+            this.queried_for_requery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.queried_for_requery_KeyDown);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(862, 276);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(160, 20);
+            this.label12.TabIndex = 78;
+            this.label12.Text = "Queried For ReQuery";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(849, 235);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(186, 20);
+            this.label13.TabIndex = 76;
+            this.label13.Text = "Query Category ReQuery";
+            // 
+            // query_category_requery
+            // 
+            this.query_category_requery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.query_category_requery.FormattingEnabled = true;
+            this.query_category_requery.Location = new System.Drawing.Point(1041, 235);
+            this.query_category_requery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.query_category_requery.Name = "query_category_requery";
+            this.query_category_requery.Size = new System.Drawing.Size(237, 28);
+            this.query_category_requery.TabIndex = 77;
+            this.query_category_requery.SelectedIndexChanged += new System.EventHandler(this.query_category_requery_SelectedIndexChanged);
+            this.query_category_requery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.query_category_requery_KeyDown);
+            // 
             // requery_raised_by
             // 
             this.requery_raised_by.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -257,6 +298,7 @@
             this.requery_raised_by.Name = "requery_raised_by";
             this.requery_raised_by.Size = new System.Drawing.Size(192, 28);
             this.requery_raised_by.TabIndex = 75;
+            this.requery_raised_by.KeyDown += new System.Windows.Forms.KeyEventHandler(this.requery_raised_by_KeyDown);
             // 
             // label11
             // 
@@ -712,6 +754,7 @@
             this.queried_for.Name = "queried_for";
             this.queried_for.Size = new System.Drawing.Size(274, 28);
             this.queried_for.TabIndex = 35;
+            this.queried_for.KeyDown += new System.Windows.Forms.KeyEventHandler(this.queried_for_KeyDown);
             // 
             // label_queriedfor
             // 
@@ -741,6 +784,7 @@
             this.query_category.Size = new System.Drawing.Size(274, 28);
             this.query_category.TabIndex = 33;
             this.query_category.SelectedIndexChanged += new System.EventHandler(this.querycategory_SelectedIndexChanged);
+            this.query_category.KeyDown += new System.Windows.Forms.KeyEventHandler(this.query_category_KeyDown);
             // 
             // query_raised_date
             // 
@@ -1043,107 +1087,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1693, 299);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // searchby_partyname
-            // 
-            this.searchby_partyname.Location = new System.Drawing.Point(533, 657);
-            this.searchby_partyname.Name = "searchby_partyname";
-            this.searchby_partyname.Size = new System.Drawing.Size(245, 26);
-            this.searchby_partyname.TabIndex = 20;
-            this.searchby_partyname.TextChanged += new System.EventHandler(this.searchby_partyname_TextChanged);
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(559, 689);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(166, 20);
-            this.label32.TabIndex = 19;
-            this.label32.Text = "Search by Party Name";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(364, 692);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(131, 20);
-            this.label31.TabIndex = 18;
-            this.label31.Text = "Search by Org ID";
-            // 
-            // searchby_orgid
-            // 
-            this.searchby_orgid.Location = new System.Drawing.Point(349, 657);
-            this.searchby_orgid.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.searchby_orgid.Name = "searchby_orgid";
-            this.searchby_orgid.Size = new System.Drawing.Size(174, 26);
-            this.searchby_orgid.TabIndex = 17;
-            this.searchby_orgid.TextChanged += new System.EventHandler(this.searchby_orgid_TextChanged);
-            // 
-            // current_datetime
-            // 
-            this.current_datetime.Location = new System.Drawing.Point(1732, 16);
-            this.current_datetime.Name = "current_datetime";
-            this.current_datetime.Size = new System.Drawing.Size(89, 26);
-            this.current_datetime.TabIndex = 21;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(23, 657);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 39);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Raw Data";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(181, 659);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 39);
-            this.button2.TabIndex = 84;
-            this.button2.Text = "TAT";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // queried_for_requery
-            // 
-            this.queried_for_requery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.queried_for_requery.FormattingEnabled = true;
-            this.queried_for_requery.Location = new System.Drawing.Point(1041, 276);
-            this.queried_for_requery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.queried_for_requery.Name = "queried_for_requery";
-            this.queried_for_requery.Size = new System.Drawing.Size(233, 28);
-            this.queried_for_requery.TabIndex = 79;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(862, 276);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(160, 20);
-            this.label12.TabIndex = 78;
-            this.label12.Text = "Queried For ReQuery";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(849, 235);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(186, 20);
-            this.label13.TabIndex = 76;
-            this.label13.Text = "Query Category ReQuery";
-            // 
-            // query_category_requery
-            // 
-            this.query_category_requery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.query_category_requery.FormattingEnabled = true;
-            this.query_category_requery.Location = new System.Drawing.Point(1041, 235);
-            this.query_category_requery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.query_category_requery.Name = "query_category_requery";
-            this.query_category_requery.Size = new System.Drawing.Size(237, 28);
-            this.query_category_requery.TabIndex = 77;
-            this.query_category_requery.SelectedIndexChanged += new System.EventHandler(this.query_category_requery_SelectedIndexChanged);
             // 
             // txt_RequestID
             // 
@@ -1504,6 +1447,68 @@
             this.txt_Screening_Volumes.Name = "txt_Screening_Volumes";
             this.txt_Screening_Volumes.ReadOnly = true;
             this.txt_Screening_Volumes.Width = 150;
+            // 
+            // searchby_partyname
+            // 
+            this.searchby_partyname.Location = new System.Drawing.Point(533, 657);
+            this.searchby_partyname.Name = "searchby_partyname";
+            this.searchby_partyname.Size = new System.Drawing.Size(245, 26);
+            this.searchby_partyname.TabIndex = 20;
+            this.searchby_partyname.TextChanged += new System.EventHandler(this.searchby_partyname_TextChanged);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(559, 689);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(166, 20);
+            this.label32.TabIndex = 19;
+            this.label32.Text = "Search by Party Name";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(364, 692);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(131, 20);
+            this.label31.TabIndex = 18;
+            this.label31.Text = "Search by Org ID";
+            // 
+            // searchby_orgid
+            // 
+            this.searchby_orgid.Location = new System.Drawing.Point(349, 657);
+            this.searchby_orgid.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.searchby_orgid.Name = "searchby_orgid";
+            this.searchby_orgid.Size = new System.Drawing.Size(174, 26);
+            this.searchby_orgid.TabIndex = 17;
+            this.searchby_orgid.TextChanged += new System.EventHandler(this.searchby_orgid_TextChanged);
+            // 
+            // current_datetime
+            // 
+            this.current_datetime.Location = new System.Drawing.Point(1732, 16);
+            this.current_datetime.Name = "current_datetime";
+            this.current_datetime.Size = new System.Drawing.Size(89, 26);
+            this.current_datetime.TabIndex = 21;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 657);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(152, 39);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Raw Data";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(181, 659);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(152, 39);
+            this.button2.TabIndex = 84;
+            this.button2.Text = "TAT";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // PassFort_CVT
             // 

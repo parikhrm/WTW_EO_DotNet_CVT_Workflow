@@ -1870,5 +1870,45 @@ namespace CVT_Workflow
                 autopopulate_queriedfor_requery_list();
             }
         }
+
+        private void query_category_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                query_category.SelectedIndex = -1;
+            }
+        }
+
+        private void queried_for_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                queried_for.SelectedIndex = -1;
+            }
+        }
+
+        private void query_category_requery_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                query_category_requery.SelectedIndex = -1;
+            }
+        }
+
+        private void queried_for_requery_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                queried_for_requery.SelectedIndex = -1;
+            }
+        }
+
+        private void requery_raised_by_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete || e.KeyCode == Keys.Space || e.KeyCode == Keys.Back)
+            {
+                requery_raised_by.SelectedIndex = -1;
+            }
+        }
     }
 }
